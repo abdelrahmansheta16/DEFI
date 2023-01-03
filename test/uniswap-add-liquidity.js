@@ -13,5 +13,12 @@ describe("LiquidityExamples", () => {
     let usdc
 
     before(async () => {
+        accounts = await ethers.getSigners(1)
+
+        const LiquidityExamples = await ethers.getContractFactory(
+            "LiquidityExamples"
+        )
+        liquidityExamples = await LiquidityExamples.deploy()
+        await liquidityExamples.deployed()
     })
 })
