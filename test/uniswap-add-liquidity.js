@@ -20,5 +20,8 @@ describe("LiquidityExamples", () => {
         )
         liquidityExamples = await LiquidityExamples.deploy()
         await liquidityExamples.deployed()
+
+        dai = await ethers.getContractAt("IERC20", DAI)
+        usdc = await ethers.getContractAt("IERC20", USDC)
     })
 })
