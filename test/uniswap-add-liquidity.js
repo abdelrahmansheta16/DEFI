@@ -23,5 +23,15 @@ describe("LiquidityExamples", () => {
 
         dai = await ethers.getContractAt("IERC20", DAI)
         usdc = await ethers.getContractAt("IERC20", USDC)
+
+        // Unlock DAI and USDC whales
+        await network.provider.request({
+            method: "hardhat_impersonateAccount",
+            params: [DAI_WHALE],
+        })
+        await network.provider.request({
+            method: "hardhat_impersonateAccount",
+            params: [USDC_WHALE],
+        })
     })
 })
