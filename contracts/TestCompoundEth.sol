@@ -10,4 +10,6 @@ contract TestCompoundEth {
     constructor(address _cToken) {
         cToken = CEth(_cToken);
     }
+
+    receive() external payable {}
 }
