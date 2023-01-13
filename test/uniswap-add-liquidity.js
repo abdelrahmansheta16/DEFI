@@ -33,5 +33,8 @@ describe("LiquidityExamples", () => {
             method: "hardhat_impersonateAccount",
             params: [USDC_WHALE],
         })
+
+        const daiWhale = await ethers.getSigner(DAI_WHALE)
+        const usdcWhale = await ethers.getSigner(USDC_WHALE)
     })
 })
