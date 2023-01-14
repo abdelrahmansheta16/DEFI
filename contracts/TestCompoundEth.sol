@@ -12,4 +12,8 @@ contract TestCompoundEth {
     }
 
     receive() external payable {}
+
+    function supply() external payable {
+        cToken.mint{value: msg.value}();
+    }
 }
