@@ -16,4 +16,8 @@ contract TestCompoundEth {
     function supply() external payable {
         cToken.mint{value: msg.value}();
     }
+
+    function getCTokenBalance() external view returns (uint) {
+        return cToken.balanceOf(address(this));
+    }
 }
