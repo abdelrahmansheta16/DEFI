@@ -20,4 +20,12 @@ contract TestCompoundEth {
     function getCTokenBalance() external view returns (uint) {
         return cToken.balanceOf(address(this));
     }
+
+    // not view function
+    function getInfo() external returns (uint exchangeRate, uint supplyRate) {
+        // Amount of current exchange rate from cToken to underlying
+        exchangeRate = cToken.exchangeRateCurrent();
+        // Amount added to you supply balance this block
+        supplyRate = cToken.supplyRatePerBlock();
+    }
 }
