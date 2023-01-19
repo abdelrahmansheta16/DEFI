@@ -36,5 +36,9 @@ describe("LiquidityExamples", () => {
 
         const daiWhale = await ethers.getSigner(DAI_WHALE)
         const usdcWhale = await ethers.getSigner(USDC_WHALE)
+
+        // Send DAI and USDC to accounts[0]
+        const daiAmount = 1000n * 10n ** 18n
+        const usdcAmount = 1000n * 10n ** 6n
     })
 })
