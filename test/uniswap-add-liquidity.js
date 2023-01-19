@@ -40,5 +40,8 @@ describe("LiquidityExamples", () => {
         // Send DAI and USDC to accounts[0]
         const daiAmount = 1000n * 10n ** 18n
         const usdcAmount = 1000n * 10n ** 6n
+
+        expect(await dai.balanceOf(daiWhale.address)).to.gte(daiAmount)
+        expect(await usdc.balanceOf(usdcWhale.address)).to.gte(usdcAmount)
     })
 })
