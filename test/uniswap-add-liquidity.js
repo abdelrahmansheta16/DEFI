@@ -47,4 +47,9 @@ describe("LiquidityExamples", () => {
         await dai.connect(daiWhale).transfer(accounts[0].address, daiAmount)
         await usdc.connect(usdcWhale).transfer(accounts[0].address, usdcAmount)
     })
+
+    it("mintNewPosition", async () => {
+        const daiAmount = 100n * 10n ** 18n
+        const usdcAmount = 100n * 10n ** 6n
+    })
 })
