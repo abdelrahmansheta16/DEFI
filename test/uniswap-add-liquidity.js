@@ -43,5 +43,8 @@ describe("LiquidityExamples", () => {
 
         expect(await dai.balanceOf(daiWhale.address)).to.gte(daiAmount)
         expect(await usdc.balanceOf(usdcWhale.address)).to.gte(usdcAmount)
+
+        await dai.connect(daiWhale).transfer(accounts[0].address, daiAmount)
+        await usdc.connect(usdcWhale).transfer(accounts[0].address, usdcAmount)
     })
 })
