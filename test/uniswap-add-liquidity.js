@@ -51,5 +51,12 @@ describe("LiquidityExamples", () => {
     it("mintNewPosition", async () => {
         const daiAmount = 100n * 10n ** 18n
         const usdcAmount = 100n * 10n ** 6n
+
+        await dai
+            .connect(accounts[0])
+            .transfer(liquidityExamples.address, daiAmount)
+        await usdc
+            .connect(accounts[0])
+            .transfer(liquidityExamples.address, usdcAmount)
     })
 })
