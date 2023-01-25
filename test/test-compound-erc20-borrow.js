@@ -22,4 +22,11 @@ contract("TestCompoundErc20", (accounts) => {
   const BORROW_DECIMALS = 18
   const BORROW_INTEREST = pow(10, BORROW_DECIMALS).mul(new BN(1000))
 
+  let testCompound
+  let token
+  let cToken
+  let tokenToBorrow
+  let cTokenToBorrow
+  beforeEach(async () => {
+  })
 })
