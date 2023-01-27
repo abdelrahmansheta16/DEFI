@@ -29,5 +29,11 @@ contract("TestCompoundErc20", (accounts) => {
   let cTokenToBorrow
   beforeEach(async () => {
     await sendEther(web3, accounts[0], WHALE, 1)
+
+    testCompound = await TestCompoundErc20.new(TOKEN, C_TOKEN)
+    token = await IERC20.at(TOKEN)
+    cToken = await CErc20.at(C_TOKEN)
+    tokenToBorrow = await IERC20.at(TOKEN_TO_BORROW)
+    cTokenToBorrow = await CErc20.at(C_TOKEN_TO_BORROW)
   })
 })
