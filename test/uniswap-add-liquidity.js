@@ -58,5 +58,7 @@ describe("LiquidityExamples", () => {
         await usdc
             .connect(accounts[0])
             .transfer(liquidityExamples.address, usdcAmount)
+
+        await liquidityExamples.mintNewPosition()
     })
 })
