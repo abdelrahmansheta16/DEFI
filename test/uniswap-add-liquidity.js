@@ -70,4 +70,7 @@ describe("LiquidityExamples", () => {
             await usdc.balanceOf(accounts[0].address)
         )
     })
+
+    it.skip("increaseLiquidityCurrentRange", async () => {
+    })
 })
