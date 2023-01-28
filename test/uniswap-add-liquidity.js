@@ -60,5 +60,14 @@ describe("LiquidityExamples", () => {
             .transfer(liquidityExamples.address, usdcAmount)
 
         await liquidityExamples.mintNewPosition()
+
+        console.log(
+            "DAI balance after add liquidity",
+            await dai.balanceOf(accounts[0].address)
+        )
+        console.log(
+            "USDC balance after add liquidity",
+            await usdc.balanceOf(accounts[0].address)
+        )
     })
 })
