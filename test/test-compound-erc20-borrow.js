@@ -35,5 +35,9 @@ contract("TestCompoundErc20", (accounts) => {
     cToken = await CErc20.at(C_TOKEN)
     tokenToBorrow = await IERC20.at(TOKEN_TO_BORROW)
     cTokenToBorrow = await CErc20.at(C_TOKEN_TO_BORROW)
+
+    const supplyBal = await token.balanceOf(WHALE)
+    console.log(`suuply whale balance: ${supplyBal.div(pow(10, SUPPLY_DECIMALS))}`)
+    assert(supplyBal.gte(SUPPLY_AMOUNT), "bal < supply")
   })
 })
