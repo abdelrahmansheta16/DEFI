@@ -39,5 +39,9 @@ contract("TestCompoundErc20", (accounts) => {
     const supplyBal = await token.balanceOf(WHALE)
     console.log(`suuply whale balance: ${supplyBal.div(pow(10, SUPPLY_DECIMALS))}`)
     assert(supplyBal.gte(SUPPLY_AMOUNT), "bal < supply")
+
+    const borrowBal = await tokenToBorrow.balanceOf(REPAY_WHALE)
+    console.log(`repay whale balance: ${borrowBal.div(pow(10, BORROW_DECIMALS))}`)
+    assert(borrowBal.gte(BORROW_INTEREST), "bal < borrow interest")
   })
 })
