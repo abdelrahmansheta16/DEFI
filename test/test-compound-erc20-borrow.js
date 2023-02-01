@@ -44,4 +44,7 @@ contract("TestCompoundErc20", (accounts) => {
     console.log(`repay whale balance: ${borrowBal.div(pow(10, BORROW_DECIMALS))}`)
     assert(borrowBal.gte(BORROW_INTEREST), "bal < borrow interest")
   })
+
+  const snapshot = async (testCompound, tokenToBorrow) => {
+  }
 })
