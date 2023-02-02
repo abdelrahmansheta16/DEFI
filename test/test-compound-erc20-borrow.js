@@ -46,5 +46,13 @@ contract("TestCompoundErc20", (accounts) => {
   })
 
   const snapshot = async (testCompound, tokenToBorrow) => {
+    const { liquidity } = await testCompound.getAccountLiquidity()
+    const colFactor = await testCompound.getCollateralFactor()
+    const supplied = await testCompound.balanceOfUnderlying.call()
+    const price = await testCompound.getPriceFeed(C_TOKEN_TO_BORROW)
+    const maxBorrow = liquidity.div(price)
+    const borrowedBalance = await testCompound.getBorrowedBalance.call(C_TOKEN_TO_BORROW)
+    const tokenToBorrowBal = await tokenToBorrow.balanceOf(testCompound.address)
+    const borrowRate = await testCompound.getBorrowRatePerBlock.call(C_TOKEN_TO_BORROW)
   }
 })
