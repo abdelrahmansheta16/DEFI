@@ -54,5 +54,16 @@ contract("TestCompoundErc20", (accounts) => {
     const borrowedBalance = await testCompound.getBorrowedBalance.call(C_TOKEN_TO_BORROW)
     const tokenToBorrowBal = await tokenToBorrow.balanceOf(testCompound.address)
     const borrowRate = await testCompound.getBorrowRatePerBlock.call(C_TOKEN_TO_BORROW)
+
+    return {
+      colFactor: colFactor.div(pow(10, 18 - 2)) / 100,
+      supplied: supplied.div(pow(10, SUPPLY_DECIMALS - 2)) / 100,
+      price: price.div(pow(10, 18 - 2)) / 100,
+      liquidity: liquidity.div(pow(10, 18)),
+      maxBorrow,
+      borrowedBalance: borrowedBalance.div(pow(10, BORROW_DECIMALS - 2)) / 100,
+      tokenToBorrowBal: tokenToBorrowBal.div(pow(10, BORROW_DECIMALS - 2)) / 100,
+      borrowRate,
+    }
   }
 })
