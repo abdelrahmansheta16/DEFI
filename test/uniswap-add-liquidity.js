@@ -74,5 +74,12 @@ describe("LiquidityExamples", () => {
     it.skip("increaseLiquidityCurrentRange", async () => {
         const daiAmount = 20n * 10n ** 18n
         const usdcAmount = 20n * 10n ** 6n
+
+        await dai.connect(accounts[0]).approve(liquidityExamples.address, daiAmount)
+        await usdc
+            .connect(accounts[0])
+            .approve(liquidityExamples.address, usdcAmount)
+
+        await liquidityExamples.increaseLiquidityCurrentRange(daiAmount, usdcAmount)
     })
 })
