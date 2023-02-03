@@ -82,4 +82,5 @@ describe("LiquidityExamples", () => {
 
         await liquidityExamples.increaseLiquidityCurrentRange(daiAmount, usdcAmount)
     })
+
 })
