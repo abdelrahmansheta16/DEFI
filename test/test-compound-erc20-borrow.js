@@ -66,4 +66,11 @@ contract("TestCompoundErc20", (accounts) => {
       borrowRate,
     }
   }
+
+  it("should supply, borrow and repay", async () => {
+    // used for debugging
+    let tx
+    let snap
+
+  })
 })
