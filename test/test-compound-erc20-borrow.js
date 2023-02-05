@@ -72,5 +72,11 @@ contract("TestCompoundErc20", (accounts) => {
     let tx
     let snap
 
+    // supply
+    await token.approve(testCompound.address, SUPPLY_AMOUNT, { from: WHALE })
+    tx = await testCompound.supply(SUPPLY_AMOUNT, {
+      from: WHALE,
+    })
+
   })
 })
