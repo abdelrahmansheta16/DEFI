@@ -84,5 +84,7 @@ describe("LiquidityExamples", () => {
     })
 
     it("decreaseLiquidity", async () => {
+        const tokenId = await liquidityExamples.tokenId()
+        const liquidity = await liquidityExamples.getLiquidity(tokenId)
     })
 })
