@@ -78,5 +78,17 @@ contract("TestCompoundErc20", (accounts) => {
       from: WHALE,
     })
 
+    // borrow
+    snap = await snapshot(testCompound, tokenToBorrow)
+    console.log(`--- borrow (before) ---`)
+    console.log(`col factor: ${snap.colFactor} %`)
+    console.log(`supplied: ${snap.supplied}`)
+    console.log(`liquidity: $ ${snap.liquidity}`)
+    console.log(`price: $ ${snap.price}`)
+    console.log(`max borrow: ${snap.maxBorrow}`)
+    console.log(`borrowed balance (compound): ${snap.borrowedBalance}`)
+    console.log(`borrowed balance (erc20): ${snap.tokenToBorrowBal}`)
+    console.log(`borrow rate: ${snap.borrowRate}`)
+
   })
 })
