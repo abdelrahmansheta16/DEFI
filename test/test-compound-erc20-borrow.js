@@ -90,5 +90,10 @@ contract("TestCompoundErc20", (accounts) => {
     console.log(`borrowed balance (erc20): ${snap.tokenToBorrowBal}`)
     console.log(`borrow rate: ${snap.borrowRate}`)
 
+    tx = await testCompound.borrow(C_TOKEN_TO_BORROW, BORROW_DECIMALS, { from: WHALE })
+    // for (const log of tx.logs) {
+    //   console.log(log.event, log.args.message, log.args.val.toString())
+    // }
+
   })
 })
