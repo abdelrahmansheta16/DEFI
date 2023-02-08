@@ -95,5 +95,13 @@ contract("TestCompoundErc20", (accounts) => {
     //   console.log(log.event, log.args.message, log.args.val.toString())
     // }
 
+    snap = await snapshot(testCompound, tokenToBorrow)
+    console.log(`--- borrow (after) ---`)
+    console.log(`liquidity: $ ${snap.liquidity}`)
+    console.log(`max borrow: ${snap.maxBorrow}`)
+    console.log(`borrowed balance (compound): ${snap.borrowedBalance}`)
+    console.log(`borrowed balance (erc20): ${snap.tokenToBorrowBal}`)
+
+
   })
 })
