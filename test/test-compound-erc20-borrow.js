@@ -102,6 +102,10 @@ contract("TestCompoundErc20", (accounts) => {
     console.log(`borrowed balance (compound): ${snap.borrowedBalance}`)
     console.log(`borrowed balance (erc20): ${snap.tokenToBorrowBal}`)
 
+    // accrue interest on borrow
+    const block = await web3.eth.getBlockNumber()
+    await time.advanceBlockTo(block + 100)
+
 
   })
 })
