@@ -106,6 +106,12 @@ contract("TestCompoundErc20", (accounts) => {
     const block = await web3.eth.getBlockNumber()
     await time.advanceBlockTo(block + 100)
 
+    snap = await snapshot(testCompound, tokenToBorrow)
+    console.log(`--- after some blocks... ---`)
+    console.log(`liquidity: $ ${snap.liquidity}`)
+    console.log(`max borrow: ${snap.maxBorrow}`)
+    console.log(`borrowed balance (compound): ${snap.borrowedBalance}`)
+    console.log(`borrowed balance (erc20): ${snap.tokenToBorrowBal}`)
 
   })
 })
