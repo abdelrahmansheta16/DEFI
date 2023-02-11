@@ -88,5 +88,10 @@ describe("LiquidityExamples", () => {
         const liquidity = await liquidityExamples.getLiquidity(tokenId)
 
         await liquidityExamples.decreaseLiquidity(liquidity)
+
+        console.log("--- decrease liquidity ---")
+        console.log(`liquidity ${liquidity}`)
+        console.log(`dai ${await dai.balanceOf(liquidityExamples.address)}`)
+        console.log(`usdc ${await usdc.balanceOf(liquidityExamples.address)}`)
     })
 })
