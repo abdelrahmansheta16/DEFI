@@ -113,5 +113,13 @@ contract("TestCompoundErc20", (accounts) => {
     console.log(`borrowed balance (compound): ${snap.borrowedBalance}`)
     console.log(`borrowed balance (erc20): ${snap.tokenToBorrowBal}`)
 
+    // repay
+    await tokenToBorrow.transfer(testCompound.address, BORROW_INTEREST, { from: REPAY_WHALE })
+    const MAX_UINT = pow(2, 256).sub(new BN(1))
+    tx = await testCompound.repay(TOKEN_TO_BORROW, C_TOKEN_TO_BORROW, MAX_UINT, {
+      from: REPAY_WHALE,
+    })
+
+    snap = await snapshot(testCompound, tokenToBorrow)
   })
 })
