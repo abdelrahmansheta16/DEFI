@@ -17,4 +17,8 @@ contract("TestCompoundEth", (accounts) => {
 
   let testCompound
   let cToken
+  beforeEach(async () => {
+    testCompound = await TestCompoundEth.new(C_TOKEN)
+    cToken = await CErc20.at(C_TOKEN)
+  })
 })
