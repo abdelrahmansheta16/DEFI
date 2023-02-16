@@ -21,4 +21,7 @@ contract("TestCompoundEth", (accounts) => {
     testCompound = await TestCompoundEth.new(C_TOKEN)
     cToken = await CErc20.at(C_TOKEN)
   })
+
+  const snapshot = async (testCompound, web3, cToken) => {
+  }
 })
