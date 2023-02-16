@@ -95,4 +95,6 @@ describe("LiquidityExamples", () => {
         console.log(`usdc ${await usdc.balanceOf(liquidityExamples.address)}`)
     })
 
+    it("collectAllFees", async () => {
+    })
 })
