@@ -96,5 +96,6 @@ describe("LiquidityExamples", () => {
     })
 
     it("collectAllFees", async () => {
+        await liquidityExamples.collectAllFees()
     })
 })
