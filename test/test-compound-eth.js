@@ -34,4 +34,17 @@ contract("TestCompoundEth", (accounts) => {
       cToken: await cToken.balanceOf(testCompound.address),
     }
   }
+
+  it("should supply and redeem", async () => {
+    let tx = await testCompound.supply({
+      from: WHALE,
+      value: DEPOSIT_AMOUNT,
+    })
+
+    let after = await snapshot(testCompound, web3, cToken)
+
+    // for (const log of tx.logs) {
+    //   console.log(log.event, log.args.message, log.args.val.toString())
+    // }
+  })
 })
