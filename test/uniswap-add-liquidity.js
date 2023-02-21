@@ -97,5 +97,9 @@ describe("LiquidityExamples", () => {
 
     it("collectAllFees", async () => {
         await liquidityExamples.collectAllFees()
+
+        console.log("--- collect fees ---")
+        console.log(`dai ${await dai.balanceOf(liquidityExamples.address)}`)
+        console.log(`usdc ${await usdc.balanceOf(liquidityExamples.address)}`)
     })
 })
