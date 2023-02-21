@@ -7,99 +7,99 @@ const DAI_WHALE = "0x2FAF487A4414Fe77e2327F0bf4AE2a264a776AD2"
 const USDC_WHALE = "0x2FAF487A4414Fe77e2327F0bf4AE2a264a776AD2"
 
 describe("LiquidityExamples", () => {
-    let liquidityExamples
-    let accounts
-    let dai
-    let usdc
+  let liquidityExamples
+  let accounts
+  let dai
+  let usdc
 
-    before(async () => {
-        accounts = await ethers.getSigners(1)
+  before(async () => {
+    accounts = await ethers.getSigners(1)
 
-        const LiquidityExamples = await ethers.getContractFactory(
-            "LiquidityExamples"
-        )
-        liquidityExamples = await LiquidityExamples.deploy()
-        await liquidityExamples.deployed()
+    const LiquidityExamples = await ethers.getContractFactory(
+      "LiquidityExamples"
+    )
+    liquidityExamples = await LiquidityExamples.deploy()
+    await liquidityExamples.deployed()
 
-        dai = await ethers.getContractAt("IERC20", DAI)
-        usdc = await ethers.getContractAt("IERC20", USDC)
+    dai = await ethers.getContractAt("IERC20", DAI)
+    usdc = await ethers.getContractAt("IERC20", USDC)
 
-        // Unlock DAI and USDC whales
-        await network.provider.request({
-            method: "hardhat_impersonateAccount",
-            params: [DAI_WHALE],
-        })
-        await network.provider.request({
-            method: "hardhat_impersonateAccount",
-            params: [USDC_WHALE],
-        })
-
-        const daiWhale = await ethers.getSigner(DAI_WHALE)
-        const usdcWhale = await ethers.getSigner(USDC_WHALE)
-
-        // Send DAI and USDC to accounts[0]
-        const daiAmount = 1000n * 10n ** 18n
-        const usdcAmount = 1000n * 10n ** 6n
-
-        expect(await dai.balanceOf(daiWhale.address)).to.gte(daiAmount)
-        expect(await usdc.balanceOf(usdcWhale.address)).to.gte(usdcAmount)
-
-        await dai.connect(daiWhale).transfer(accounts[0].address, daiAmount)
-        await usdc.connect(usdcWhale).transfer(accounts[0].address, usdcAmount)
+    // Unlock DAI and USDC whales
+    await network.provider.request({
+      method: "hardhat_impersonateAccount",
+      params: [DAI_WHALE],
+    })
+    await network.provider.request({
+      method: "hardhat_impersonateAccount",
+      params: [USDC_WHALE],
     })
 
-    it("mintNewPosition", async () => {
-        const daiAmount = 100n * 10n ** 18n
-        const usdcAmount = 100n * 10n ** 6n
+    const daiWhale = await ethers.getSigner(DAI_WHALE)
+    const usdcWhale = await ethers.getSigner(USDC_WHALE)
 
-        await dai
-            .connect(accounts[0])
-            .transfer(liquidityExamples.address, daiAmount)
-        await usdc
-            .connect(accounts[0])
-            .transfer(liquidityExamples.address, usdcAmount)
+    // Send DAI and USDC to accounts[0]
+    const daiAmount = 1000n * 10n ** 18n
+    const usdcAmount = 1000n * 10n ** 6n
 
-        await liquidityExamples.mintNewPosition()
+    expect(await dai.balanceOf(daiWhale.address)).to.gte(daiAmount)
+    expect(await usdc.balanceOf(usdcWhale.address)).to.gte(usdcAmount)
 
-        console.log(
-            "DAI balance after add liquidity",
-            await dai.balanceOf(accounts[0].address)
-        )
-        console.log(
-            "USDC balance after add liquidity",
-            await usdc.balanceOf(accounts[0].address)
-        )
-    })
+    await dai.connect(daiWhale).transfer(accounts[0].address, daiAmount)
+    await usdc.connect(usdcWhale).transfer(accounts[0].address, usdcAmount)
+  })
 
-    it.skip("increaseLiquidityCurrentRange", async () => {
-        const daiAmount = 20n * 10n ** 18n
-        const usdcAmount = 20n * 10n ** 6n
+  it("mintNewPosition", async () => {
+    const daiAmount = 100n * 10n ** 18n
+    const usdcAmount = 100n * 10n ** 6n
 
-        await dai.connect(accounts[0]).approve(liquidityExamples.address, daiAmount)
-        await usdc
-            .connect(accounts[0])
-            .approve(liquidityExamples.address, usdcAmount)
+    await dai
+      .connect(accounts[0])
+      .transfer(liquidityExamples.address, daiAmount)
+    await usdc
+      .connect(accounts[0])
+      .transfer(liquidityExamples.address, usdcAmount)
 
-        await liquidityExamples.increaseLiquidityCurrentRange(daiAmount, usdcAmount)
-    })
+    await liquidityExamples.mintNewPosition()
 
-    it("decreaseLiquidity", async () => {
-        const tokenId = await liquidityExamples.tokenId()
-        const liquidity = await liquidityExamples.getLiquidity(tokenId)
+    console.log(
+      "DAI balance after add liquidity",
+      await dai.balanceOf(accounts[0].address)
+    )
+    console.log(
+      "USDC balance after add liquidity",
+      await usdc.balanceOf(accounts[0].address)
+    )
+  })
 
-        await liquidityExamples.decreaseLiquidity(liquidity)
+  it.skip("increaseLiquidityCurrentRange", async () => {
+    const daiAmount = 20n * 10n ** 18n
+    const usdcAmount = 20n * 10n ** 6n
 
-        console.log("--- decrease liquidity ---")
-        console.log(`liquidity ${liquidity}`)
-        console.log(`dai ${await dai.balanceOf(liquidityExamples.address)}`)
-        console.log(`usdc ${await usdc.balanceOf(liquidityExamples.address)}`)
-    })
+    await dai.connect(accounts[0]).approve(liquidityExamples.address, daiAmount)
+    await usdc
+      .connect(accounts[0])
+      .approve(liquidityExamples.address, usdcAmount)
 
-    it("collectAllFees", async () => {
-        await liquidityExamples.collectAllFees()
+    await liquidityExamples.increaseLiquidityCurrentRange(daiAmount, usdcAmount)
+  })
 
-        console.log("--- collect fees ---")
-        console.log(`dai ${await dai.balanceOf(liquidityExamples.address)}`)
-        console.log(`usdc ${await usdc.balanceOf(liquidityExamples.address)}`)
-    })
+  it("decreaseLiquidity", async () => {
+    const tokenId = await liquidityExamples.tokenId()
+    const liquidity = await liquidityExamples.getLiquidity(tokenId)
+
+    await liquidityExamples.decreaseLiquidity(liquidity)
+
+    console.log("--- decrease liquidity ---")
+    console.log(`liquidity ${liquidity}`)
+    console.log(`dai ${await dai.balanceOf(liquidityExamples.address)}`)
+    console.log(`usdc ${await usdc.balanceOf(liquidityExamples.address)}`)
+  })
+
+  it("collectAllFees", async () => {
+    await liquidityExamples.collectAllFees()
+
+    console.log("--- collect fees ---")
+    console.log(`dai ${await dai.balanceOf(liquidityExamples.address)}`)
+    console.log(`usdc ${await usdc.balanceOf(liquidityExamples.address)}`)
+  })
 })
