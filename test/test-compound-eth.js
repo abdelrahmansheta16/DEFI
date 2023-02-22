@@ -54,5 +54,11 @@ contract("TestCompoundEth", (accounts) => {
     console.log(`balance of underlying ${after.balanceOfUnderlying}`)
     console.log(`eth balance ${after.eth}`)
     console.log(`c token balance ${after.cToken}`)
+
+    // accrue interest on supply
+    const block = await web3.eth.getBlockNumber()
+    await time.advanceBlockTo(block + 100)
+
+    after = await snapshot(testCompound, web3, cToken)
   })
 })
