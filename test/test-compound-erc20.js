@@ -10,3 +10,13 @@ const CErc20 = artifacts.require("CErc20")
 const TestCompoundErc20 = artifacts.require("TestCompoundErc20")
 
 const DEPOSIT_AMOUNT = pow(10, 8).mul(new BN(1))
+
+contract("TestCompoundErc20", (accounts) => {
+  const WHALE = WBTC_WHALE
+  const TOKEN = WBTC
+  const C_TOKEN = CWBTC
+
+  let testCompound
+  let token
+  let cToken
+})
