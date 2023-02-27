@@ -19,4 +19,7 @@ contract("TestCompoundErc20", (accounts) => {
   let testCompound
   let token
   let cToken
+  beforeEach(async () => {
+    await sendEther(web3, accounts[0], WHALE, 1)
+  })
 })
