@@ -25,5 +25,9 @@ contract("TestCompoundErc20", (accounts) => {
     testCompound = await TestCompoundErc20.new(TOKEN, C_TOKEN)
     token = await IERC20.at(TOKEN)
     cToken = await CErc20.at(C_TOKEN)
+
+    const bal = await token.balanceOf(WHALE)
+    console.log(`whale balance: ${bal}`)
+    assert(bal.gte(DEPOSIT_AMOUNT), "bal < deposit")
   })
 })
