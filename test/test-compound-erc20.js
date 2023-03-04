@@ -30,4 +30,7 @@ contract("TestCompoundErc20", (accounts) => {
     console.log(`whale balance: ${bal}`)
     assert(bal.gte(DEPOSIT_AMOUNT), "bal < deposit")
   })
+
+  const snapshot = async (testCompound, token, cToken) => {
+  }
 })
