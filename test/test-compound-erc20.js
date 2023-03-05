@@ -32,5 +32,6 @@ contract("TestCompoundErc20", (accounts) => {
   })
 
   const snapshot = async (testCompound, token, cToken) => {
+    const { exchangeRate, supplyRate } = await testCompound.getInfo.call()
   }
 })
