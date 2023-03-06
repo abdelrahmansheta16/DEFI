@@ -33,5 +33,14 @@ contract("TestCompoundErc20", (accounts) => {
 
   const snapshot = async (testCompound, token, cToken) => {
     const { exchangeRate, supplyRate } = await testCompound.getInfo.call()
+
+    return {
+      exchangeRate,
+      supplyRate,
+      estimateBalance: await testCompound.estimateBalanceOfUnderlying.call(),
+      balanceOfUnderlying: await testCompound.balanceOfUnderlying.call(),
+      token: await token.balanceOf(testCompound.address),
+      cToken: await cToken.balanceOf(testCompound.address),
+    }
   }
 })
