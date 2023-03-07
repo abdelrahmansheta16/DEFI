@@ -43,4 +43,7 @@ contract("TestCompoundErc20", (accounts) => {
       cToken: await cToken.balanceOf(testCompound.address),
     }
   }
+
+  it("should supply and redeem", async () => {
+  })
 })
