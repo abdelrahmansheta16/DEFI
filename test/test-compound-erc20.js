@@ -52,5 +52,17 @@ contract("TestCompoundErc20", (accounts) => {
     })
 
     let after = await snapshot(testCompound, token, cToken)
+
+    // for (const log of tx.logs) {
+    //   console.log(log.event, log.args.message, log.args.val.toString())
+    // }
+
+    console.log("--- supply ---")
+    console.log(`exchange rate ${after.exchangeRate}`)
+    console.log(`supply rate ${after.supplyRate}`)
+    console.log(`estimate balance ${after.estimateBalance}`)
+    console.log(`balance of underlying ${after.balanceOfUnderlying}`)
+    console.log(`token balance ${after.token}`)
+    console.log(`c token balance ${after.cToken}`)
   })
 })
