@@ -70,5 +70,8 @@ contract("TestCompoundErc20", (accounts) => {
     await time.advanceBlockTo(block + 100)
 
     after = await snapshot(testCompound, token, cToken)
+
+    console.log(`--- after some blocks... ---`)
+    console.log(`balance of underlying ${after.balanceOfUnderlying}`)
   })
 })
