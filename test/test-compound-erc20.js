@@ -73,5 +73,13 @@ contract("TestCompoundErc20", (accounts) => {
 
     console.log(`--- after some blocks... ---`)
     console.log(`balance of underlying ${after.balanceOfUnderlying}`)
+
+    // test redeem
+    const cTokenAmount = await cToken.balanceOf(testCompound.address)
+    tx = await testCompound.redeem(cTokenAmount, {
+      from: WHALE,
+    })
+
+    after = await snapshot(testCompound, token, cToken)
   })
 })
