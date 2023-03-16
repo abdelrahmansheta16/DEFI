@@ -22,4 +22,17 @@ contract TestCompoundLiquidate {
     CErc20 public cTokenBorrow;
 
     event Log(string message, uint val);
+
+    constructor(
+        address _tokenSupply,
+        address _cTokenSupply,
+        address _tokenBorrow,
+        address _cTokenBorrow
+    ) {
+        tokenSupply = IERC20(_tokenSupply);
+        cTokenSupply = CErc20(_cTokenSupply);
+
+        tokenBorrow = IERC20(_tokenBorrow);
+        cTokenBorrow = CErc20(_cTokenBorrow);
+    }
 }
