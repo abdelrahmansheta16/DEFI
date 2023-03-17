@@ -35,4 +35,10 @@ contract TestCompoundLiquidate {
         tokenBorrow = IERC20(_tokenBorrow);
         cTokenBorrow = CErc20(_cTokenBorrow);
     }
+
+    function supply(uint _amount) external {
+        tokenSupply.transferFrom(msg.sender, address(this), _amount);
+        tokenSupply.approve(address(cTokenSupply), _amount);
+        require(cTokenSupply.mint(_amount) == 0, "mint failed");
+    }
 }
