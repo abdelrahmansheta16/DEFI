@@ -41,4 +41,9 @@ contract TestCompoundLiquidate {
         tokenSupply.approve(address(cTokenSupply), _amount);
         require(cTokenSupply.mint(_amount) == 0, "mint failed");
     }
+
+    // not view function
+    function getSupplyBalance() external returns (uint) {
+        return cTokenSupply.balanceOfUnderlying(address(this));
+    }
 }
