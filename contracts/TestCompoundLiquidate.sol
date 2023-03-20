@@ -46,4 +46,9 @@ contract TestCompoundLiquidate {
     function getSupplyBalance() external returns (uint) {
         return cTokenSupply.balanceOfUnderlying(address(this));
     }
+
+    function getCollateralFactor() external view returns (uint) {
+        (, uint colFactor, ) = comptroller.markets(address(cTokenSupply));
+        return colFactor; // divide by 1e18 to get in %
+    }
 }
