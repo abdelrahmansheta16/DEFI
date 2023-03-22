@@ -63,4 +63,9 @@ contract TestCompoundLiquidate {
         require(error == 0, "error");
         return (_liquidity, _shortfall);
     }
+
+    function getPriceFeed(address _cToken) external view returns (uint) {
+        // scaled up by 1e18
+        return priceFeed.getUnderlyingPrice(_cToken);
+    }
 }
