@@ -68,4 +68,11 @@ contract TestCompoundLiquidate {
         // scaled up by 1e18
         return priceFeed.getUnderlyingPrice(_cToken);
     }
+
+    function enterMarket() external {
+        address[] memory cTokens = new address[](1);
+        cTokens[0] = address(cTokenSupply);
+        uint[] memory errors = comptroller.enterMarkets(cTokens);
+        require(errors[0] == 0, "Comptroller.enterMarkets failed.");
+    }
 }
