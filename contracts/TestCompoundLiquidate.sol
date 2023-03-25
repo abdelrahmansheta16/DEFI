@@ -75,4 +75,8 @@ contract TestCompoundLiquidate {
         uint[] memory errors = comptroller.enterMarkets(cTokens);
         require(errors[0] == 0, "Comptroller.enterMarkets failed.");
     }
+
+    function borrow(uint _amount) external {
+        require(cTokenBorrow.borrow(_amount) == 0, "borrow failed");
+    }
 }
