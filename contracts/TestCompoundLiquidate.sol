@@ -79,4 +79,9 @@ contract TestCompoundLiquidate {
     function borrow(uint _amount) external {
         require(cTokenBorrow.borrow(_amount) == 0, "borrow failed");
     }
+
+    // not view function
+    function getBorrowBalance() public returns (uint) {
+        return cTokenBorrow.borrowBalanceCurrent(address(this));
+    }
 }
