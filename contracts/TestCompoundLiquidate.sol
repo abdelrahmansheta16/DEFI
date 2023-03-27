@@ -85,3 +85,13 @@ contract TestCompoundLiquidate {
         return cTokenBorrow.borrowBalanceCurrent(address(this));
     }
 }
+
+contract CompoundLiquidator {
+    Comptroller public comptroller =
+        Comptroller(0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B);
+
+    IERC20 public tokenBorrow;
+    CErc20 public cTokenBorrow;
+
+    event Log(string message, uint val);
+}
