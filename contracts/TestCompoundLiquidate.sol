@@ -109,4 +109,28 @@ contract CompoundLiquidator {
     function getLiquidationIncentive() external view returns (uint) {
         return comptroller.liquidationIncentiveMantissa();
     }
+
+    // get amount of collateral to be liquidated
+    function getAmountToBeLiquidated(
+        address _cTokenBorrowed,
+        address _cTokenCollateral,
+        uint _actualRepayAmount
+    ) external view returns (uint) {
+        /*
+         * Get the exchange rate and calculate the number of collateral tokens to seize:
+         *  seizeAmount = actualRepayAmount * liquidationIncentive * priceBorrowed / priceCollateral
+         *  seizeTokens = seizeAmount / exchangeRate
+         *   = actualRepayAmount * (liquidationIncentive * priceBorrowed) / (priceCollateral * exchangeRate)
+         */
+        (uint error, uint cTokenCollateralAmount) = comptroller
+            .liquidateCalculateSeizeTokens(
+                _cTokenBorrowed,
+                _cTokenCollateral,
+                _actualRepayAmount
+            );
+
+        require(error == 0, "error");
+
+        return cTokenCollateralAmount;
+    }
 }
