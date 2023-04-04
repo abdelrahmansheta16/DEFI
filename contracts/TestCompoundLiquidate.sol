@@ -133,4 +133,23 @@ contract CompoundLiquidator {
 
         return cTokenCollateralAmount;
     }
+
+    // liquidate
+    function liquidate(
+        address _borrower,
+        uint _repayAmount,
+        address _cTokenCollateral
+    ) external {
+        tokenBorrow.transferFrom(msg.sender, address(this), _repayAmount);
+        tokenBorrow.approve(address(cTokenBorrow), _repayAmount);
+
+        require(
+            cTokenBorrow.liquidateBorrow(
+                _borrower,
+                _repayAmount,
+                _cTokenCollateral
+            ) == 0,
+            "liquidate failed"
+        );
+    }
 }
