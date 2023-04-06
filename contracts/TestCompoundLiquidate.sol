@@ -152,4 +152,12 @@ contract CompoundLiquidator {
             "liquidate failed"
         );
     }
+
+    // get amount liquidated
+    // not view function
+    function getSupplyBalance(
+        address _cTokenCollateral
+    ) external returns (uint) {
+        return CErc20(_cTokenCollateral).balanceOfUnderlying(address(this));
+    }
 }
