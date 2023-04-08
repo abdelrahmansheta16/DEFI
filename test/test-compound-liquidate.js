@@ -9,3 +9,6 @@ const IERC20 = artifacts.require("IERC20")
 const CErc20 = artifacts.require("CErc20")
 const TestCompoundLiquidate = artifacts.require("TestCompoundLiquidate")
 const CompoundLiquidator = artifacts.require("CompoundLiquidator")
+
+contract("TestCompoundLiquidate", (accounts) => {
+})
