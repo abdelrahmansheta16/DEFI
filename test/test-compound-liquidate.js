@@ -11,4 +11,10 @@ const TestCompoundLiquidate = artifacts.require("TestCompoundLiquidate")
 const CompoundLiquidator = artifacts.require("CompoundLiquidator")
 
 contract("TestCompoundLiquidate", (accounts) => {
+  const SUPPLY_WHALE = WBTC_WHALE
+  const TOKEN_SUPPLY = WBTC
+  const C_TOKEN_SUPPLY = CWBTC
+  const TOKEN_BORROW = DAI
+  const C_TOKEN_BORROW = CDAI
+  const LIQUIDATOR = DAI_WHALE
 })
