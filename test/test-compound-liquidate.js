@@ -17,4 +17,8 @@ contract("TestCompoundLiquidate", (accounts) => {
   const TOKEN_BORROW = DAI
   const C_TOKEN_BORROW = CDAI
   const LIQUIDATOR = DAI_WHALE
+
+  const SUPPLY_DECIMALS = 8
+  const SUPPLY_AMOUNT = pow(10, SUPPLY_DECIMALS).mul(new BN(1))
+  const BORROW_DECIMALS = 18
 })
