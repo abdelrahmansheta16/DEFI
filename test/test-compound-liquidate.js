@@ -21,4 +21,11 @@ contract("TestCompoundLiquidate", (accounts) => {
   const SUPPLY_DECIMALS = 8
   const SUPPLY_AMOUNT = pow(10, SUPPLY_DECIMALS).mul(new BN(1))
   const BORROW_DECIMALS = 18
+
+  let testCompound
+  let tokenSupply
+  let cTokenSupply
+  let tokenBorrow
+  let cTokenBorrow
+  let liquidator
 })
