@@ -28,4 +28,6 @@ contract("TestCompoundLiquidate", (accounts) => {
   let tokenBorrow
   let cTokenBorrow
   let liquidator
+  beforeEach(async () => {
+  })
 })
