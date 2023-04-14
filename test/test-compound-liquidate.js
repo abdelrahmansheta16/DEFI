@@ -29,5 +29,7 @@ contract("TestCompoundLiquidate", (accounts) => {
   let cTokenBorrow
   let liquidator
   beforeEach(async () => {
+    await sendEther(web3, accounts[0], SUPPLY_WHALE, 1)
+    await sendEther(web3, accounts[0], LIQUIDATOR, 1)
   })
 })
