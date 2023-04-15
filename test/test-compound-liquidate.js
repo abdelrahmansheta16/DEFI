@@ -31,5 +31,12 @@ contract("TestCompoundLiquidate", (accounts) => {
   beforeEach(async () => {
     await sendEther(web3, accounts[0], SUPPLY_WHALE, 1)
     await sendEther(web3, accounts[0], LIQUIDATOR, 1)
+
+    testCompound = await TestCompoundLiquidate.new(TOKEN_SUPPLY, C_TOKEN_SUPPLY, TOKEN_BORROW, C_TOKEN_BORROW)
+    tokenSupply = await IERC20.at(TOKEN_SUPPLY)
+    cTokenSupply = await CErc20.at(C_TOKEN_SUPPLY)
+    tokenBorrow = await IERC20.at(TOKEN_BORROW)
+    cTokenBorrow = await CErc20.at(C_TOKEN_BORROW)
+    liquidator = await CompoundLiquidator.new(TOKEN_BORROW, C_TOKEN_BORROW)
   })
 })
