@@ -38,5 +38,9 @@ contract("TestCompoundLiquidate", (accounts) => {
     tokenBorrow = await IERC20.at(TOKEN_BORROW)
     cTokenBorrow = await CErc20.at(C_TOKEN_BORROW)
     liquidator = await CompoundLiquidator.new(TOKEN_BORROW, C_TOKEN_BORROW)
+
+    const supplyBal = await tokenSupply.balanceOf(SUPPLY_WHALE)
+    console.log(`suuply whale balance: ${supplyBal.div(pow(10, SUPPLY_DECIMALS))}`)
+    assert(supplyBal.gte(SUPPLY_AMOUNT), "bal < supply")
   })
 })
