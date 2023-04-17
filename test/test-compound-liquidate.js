@@ -43,4 +43,7 @@ contract("TestCompoundLiquidate", (accounts) => {
     console.log(`suuply whale balance: ${supplyBal.div(pow(10, SUPPLY_DECIMALS))}`)
     assert(supplyBal.gte(SUPPLY_AMOUNT), "bal < supply")
   })
+
+  const snapshot = async (testCompound, liquidator) => {
+  }
 })
