@@ -45,5 +45,13 @@ contract("TestCompoundLiquidate", (accounts) => {
   })
 
   const snapshot = async (testCompound, liquidator) => {
+    const supplied = await testCompound.getSupplyBalance.call()
+    const borrowed = await testCompound.getBorrowBalance.call()
+    const colFactor = await testCompound.getCollateralFactor()
+    const { liquidity, shortfall } = await testCompound.getAccountLiquidity()
+    const price = await testCompound.getPriceFeed(C_TOKEN_BORROW)
+    const closeFactor = await liquidator.getCloseFactor()
+    const incentive = await liquidator.getLiquidationIncentive()
+    const liquidated = await liquidator.getSupplyBalance.call(C_TOKEN_SUPPLY)
   }
 })
