@@ -53,5 +53,17 @@ contract("TestCompoundLiquidate", (accounts) => {
     const closeFactor = await liquidator.getCloseFactor()
     const incentive = await liquidator.getLiquidationIncentive()
     const liquidated = await liquidator.getSupplyBalance.call(C_TOKEN_SUPPLY)
+
+    return {
+      colFactor: colFactor.div(pow(10, 18 - 2)),
+      supplied: supplied.div(pow(10, SUPPLY_DECIMALS - 2)) / 100,
+      borrowed: borrowed.div(pow(10, BORROW_DECIMALS - 2)) / 100,
+      price: price.div(pow(10, 18 - 2)) / 100,
+      liquidity: liquidity.div(pow(10, 14)) / 10000,
+      shortfall: shortfall.div(pow(10, 14)) / 10000,
+      closeFactor: closeFactor.div(pow(10, 18 - 2)),
+      incentive: incentive.div(pow(10, 18 - 2)) / 100,
+      liquidated: liquidated.div(pow(10, SUPPLY_DECIMALS - 4)) / 10000,
+    }
   }
 })
