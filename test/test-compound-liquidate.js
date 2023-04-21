@@ -66,4 +66,10 @@ contract("TestCompoundLiquidate", (accounts) => {
       liquidated: liquidated.div(pow(10, SUPPLY_DECIMALS - 4)) / 10000,
     }
   }
+
+  it("should liquidate", async () => {
+    // used for debugging
+    let tx
+    let snap
+  })
 })
