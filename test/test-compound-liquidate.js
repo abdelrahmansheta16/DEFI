@@ -71,5 +71,11 @@ contract("TestCompoundLiquidate", (accounts) => {
     // used for debugging
     let tx
     let snap
+
+    // supply
+    await tokenSupply.approve(testCompound.address, SUPPLY_AMOUNT, { from: SUPPLY_WHALE })
+    tx = await testCompound.supply(SUPPLY_AMOUNT, {
+      from: SUPPLY_WHALE,
+    })
   })
 })
