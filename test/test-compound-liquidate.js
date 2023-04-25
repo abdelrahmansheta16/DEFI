@@ -77,5 +77,10 @@ contract("TestCompoundLiquidate", (accounts) => {
     tx = await testCompound.supply(SUPPLY_AMOUNT, {
       from: SUPPLY_WHALE,
     })
+
+    snap = await snapshot(testCompound, liquidator)
+    console.log(`--- supplied ---`)
+    console.log(`col factor: ${snap.colFactor} %`)
+    console.log(`supplied: ${snap.supplied}`)
   })
 })
