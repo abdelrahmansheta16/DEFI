@@ -82,5 +82,8 @@ contract("TestCompoundLiquidate", (accounts) => {
     console.log(`--- supplied ---`)
     console.log(`col factor: ${snap.colFactor} %`)
     console.log(`supplied: ${snap.supplied}`)
+
+    // enter market
+    tx = await testCompound.enterMarket({ from: accounts[0] })
   })
 })
