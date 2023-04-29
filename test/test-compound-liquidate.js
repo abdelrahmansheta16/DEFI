@@ -85,5 +85,12 @@ contract("TestCompoundLiquidate", (accounts) => {
 
     // enter market
     tx = await testCompound.enterMarket({ from: accounts[0] })
+
+    // borrow
+    const { liquidity } = await testCompound.getAccountLiquidity()
+    const price = await testCompound.getPriceFeed(C_TOKEN_BORROW)
+    const maxBorrow = liquidity.mul(pow(10, BORROW_DECIMALS)).div(price)
+    // NOTE: tweak borrow amount if borrow fails
+    const borrowAmount = maxBorrow.mul(new BN(9997)).div(new BN(10000))
   })
 })
