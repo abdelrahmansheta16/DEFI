@@ -92,5 +92,11 @@ contract("TestCompoundLiquidate", (accounts) => {
     const maxBorrow = liquidity.mul(pow(10, BORROW_DECIMALS)).div(price)
     // NOTE: tweak borrow amount if borrow fails
     const borrowAmount = maxBorrow.mul(new BN(9997)).div(new BN(10000))
+
+    console.log(`--- entered market ---`)
+    console.log(`liquidity: $ ${liquidity.div(pow(10, 18))}`)
+    console.log(`price: $ ${price.div(pow(10, 18))}`)
+    console.log(`max borrow: ${maxBorrow.div(pow(10, 18))}`)
+    console.log(`borrow amount: ${borrowAmount.div(pow(10, 18))}`)
   })
 })
