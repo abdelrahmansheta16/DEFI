@@ -98,5 +98,7 @@ contract("TestCompoundLiquidate", (accounts) => {
     console.log(`price: $ ${price.div(pow(10, 18))}`)
     console.log(`max borrow: ${maxBorrow.div(pow(10, 18))}`)
     console.log(`borrow amount: ${borrowAmount.div(pow(10, 18))}`)
+
+    tx = await testCompound.borrow(borrowAmount, { from: accounts[0] })
   })
 })
