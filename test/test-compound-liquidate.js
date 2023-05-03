@@ -100,5 +100,10 @@ contract("TestCompoundLiquidate", (accounts) => {
     console.log(`borrow amount: ${borrowAmount.div(pow(10, 18))}`)
 
     tx = await testCompound.borrow(borrowAmount, { from: accounts[0] })
+
+    snap = await snapshot(testCompound, liquidator)
+    console.log(`--- borrowed ---`)
+    console.log(`liquidity: $ ${snap.liquidity}`)
+    console.log(`borrowed: ${snap.borrowed}`)
   })
 })
