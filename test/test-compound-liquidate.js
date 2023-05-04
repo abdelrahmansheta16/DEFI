@@ -105,5 +105,10 @@ contract("TestCompoundLiquidate", (accounts) => {
     console.log(`--- borrowed ---`)
     console.log(`liquidity: $ ${snap.liquidity}`)
     console.log(`borrowed: ${snap.borrowed}`)
+
+    // accrue interest on borrow
+    const block = await web3.eth.getBlockNumber()
+    // NOTE: tweak this to increase borrowed amount
+    await time.advanceBlockTo(block + 10000)
   })
 })
