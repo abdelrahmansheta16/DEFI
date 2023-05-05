@@ -110,5 +110,8 @@ contract("TestCompoundLiquidate", (accounts) => {
     const block = await web3.eth.getBlockNumber()
     // NOTE: tweak this to increase borrowed amount
     await time.advanceBlockTo(block + 10000)
+
+    // send any tx to Compound to update liquidity and shortfall
+    await testCompound.getBorrowBalance()
   })
 })
