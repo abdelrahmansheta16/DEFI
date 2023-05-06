@@ -113,5 +113,11 @@ contract("TestCompoundLiquidate", (accounts) => {
 
     // send any tx to Compound to update liquidity and shortfall
     await testCompound.getBorrowBalance()
+
+    snap = await snapshot(testCompound, liquidator)
+    console.log(`--- after some blocks... ---`)
+    console.log(`liquidity: $ ${snap.liquidity}`)
+    console.log(`shortfall: $ ${snap.shortfall}`)
+    console.log(`borrowed: ${snap.borrowed}`)
   })
 })
