@@ -119,5 +119,9 @@ contract("TestCompoundLiquidate", (accounts) => {
     console.log(`liquidity: $ ${snap.liquidity}`)
     console.log(`shortfall: $ ${snap.shortfall}`)
     console.log(`borrowed: ${snap.borrowed}`)
+
+    // liquidate
+    const closeFactor = await liquidator.getCloseFactor()
+    const repayAmount = (await testCompound.getBorrowBalance.call()).mul(closeFactor).div(pow(10, 18))
   })
 })
