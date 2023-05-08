@@ -123,5 +123,9 @@ contract("TestCompoundLiquidate", (accounts) => {
     // liquidate
     const closeFactor = await liquidator.getCloseFactor()
     const repayAmount = (await testCompound.getBorrowBalance.call()).mul(closeFactor).div(pow(10, 18))
+
+    const liqBal = await tokenBorrow.balanceOf(LIQUIDATOR)
+    console.log(`liquidator balance: ${liqBal.div(pow(10, BORROW_DECIMALS))}`)
+    assert(liqBal.gte(repayAmount), "bal < repay")
   })
 })
