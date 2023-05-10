@@ -127,5 +127,10 @@ contract("TestCompoundLiquidate", (accounts) => {
     const liqBal = await tokenBorrow.balanceOf(LIQUIDATOR)
     console.log(`liquidator balance: ${liqBal.div(pow(10, BORROW_DECIMALS))}`)
     assert(liqBal.gte(repayAmount), "bal < repay")
+
+    const amountToBeLiquidated = await liquidator.getAmountToBeLiquidated(C_TOKEN_BORROW, C_TOKEN_SUPPLY, repayAmount)
+    console.log(
+      `amount to be liquidated (cToken collateral):  ${amountToBeLiquidated.div(pow(10, SUPPLY_DECIMALS - 2)) / 100}`
+    )
   })
 })
