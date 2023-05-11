@@ -132,5 +132,10 @@ contract("TestCompoundLiquidate", (accounts) => {
     console.log(
       `amount to be liquidated (cToken collateral):  ${amountToBeLiquidated.div(pow(10, SUPPLY_DECIMALS - 2)) / 100}`
     )
+
+    await tokenBorrow.approve(liquidator.address, repayAmount, { from: LIQUIDATOR })
+    tx = await liquidator.liquidate(testCompound.address, repayAmount, C_TOKEN_SUPPLY, {
+      from: LIQUIDATOR,
+    })
   })
 })
