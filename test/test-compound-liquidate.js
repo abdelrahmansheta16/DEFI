@@ -137,5 +137,7 @@ contract("TestCompoundLiquidate", (accounts) => {
     tx = await liquidator.liquidate(testCompound.address, repayAmount, C_TOKEN_SUPPLY, {
       from: LIQUIDATOR,
     })
+
+    snap = await snapshot(testCompound, liquidator)
   })
 })
