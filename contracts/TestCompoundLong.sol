@@ -29,4 +29,12 @@ contract TestCompoundLong {
   IUniswapV2Router private constant UNI =
     IUniswapV2Router(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
   IERC20 private constant WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+
+  constructor(
+    address _cEth,
+    address _cTokenBorrow,
+    address _tokenBorrow,
+    uint _decimals
+  ) {
+  }
 }
