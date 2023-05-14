@@ -36,5 +36,9 @@ contract TestCompoundLong {
     address _tokenBorrow,
     uint _decimals
   ) {
+    cEth = CEth(_cEth);
+    cTokenBorrow = CErc20(_cTokenBorrow);
+    tokenBorrow = IERC20(_tokenBorrow);
+    decimals = _decimals;
   }
 }
