@@ -147,5 +147,13 @@ contract("TestCompoundLiquidate", (accounts) => {
     console.log(`shortfall: $ ${snap.shortfall}`)
     console.log(`borrowed: ${snap.borrowed}`)
     console.log(`liquidated: ${snap.liquidated}`)
+
+    /* memo
+    c = 31572
+    r = c * 0.65 * 0.5
+    b = 1
+    i = 1.08
+    r * i * b / c
+    */
   })
 })
