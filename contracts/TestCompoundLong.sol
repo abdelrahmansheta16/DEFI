@@ -16,14 +16,17 @@ import "./interfaces/compound.sol";
 import "./interfaces/Uniswap.sol";
 
 contract TestCompoundLong {
-    CEth public cEth;
-    CErc20 public cTokenBorrow;
-    IERC20 public tokenBorrow;
-    uint public decimals;
+  CEth public cEth;
+  CErc20 public cTokenBorrow;
+  IERC20 public tokenBorrow;
+  uint public decimals;
 
-    Comptroller public comptroller =
-        Comptroller(0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B);
+  Comptroller public comptroller =
+    Comptroller(0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B);
 
-    PriceFeed public priceFeed =
-        PriceFeed(0x922018674c12a7F0D394ebEEf9B58F186CdE13c1);
+  PriceFeed public priceFeed = PriceFeed(0x922018674c12a7F0D394ebEEf9B58F186CdE13c1);
+
+  IUniswapV2Router private constant UNI =
+    IUniswapV2Router(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+  IERC20 private constant WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
 }
