@@ -142,7 +142,7 @@ contract("TestCompoundLiquidate", (accounts) => {
     console.log(`--- liquidated ---`)
     console.log(`close factor: ${snap.closeFactor} %`)
     console.log(`liquidation incentive: ${snap.incentive}`)
-    console.log(`supplied: ${snap.supplied}`)
+    console.log(`supplied: ${snap.supplied}`) 
     console.log(`liquidity: $ ${snap.liquidity}`)
     console.log(`shortfall: $ ${snap.shortfall}`)
     console.log(`borrowed: ${snap.borrowed}`)
