@@ -20,4 +20,7 @@ contract TestCompoundLong {
   CErc20 public cTokenBorrow;
   IERC20 public tokenBorrow;
   uint public decimals;
+
+  Comptroller public comptroller =
+    Comptroller(0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B);
 }
