@@ -16,11 +16,14 @@ import "./interfaces/compound.sol";
 import "./interfaces/Uniswap.sol";
 
 contract TestCompoundLong {
-  CEth public cEth;
-  CErc20 public cTokenBorrow;
-  IERC20 public tokenBorrow;
-  uint public decimals;
+    CEth public cEth;
+    CErc20 public cTokenBorrow;
+    IERC20 public tokenBorrow;
+    uint public decimals;
 
-  Comptroller public comptroller =
-    Comptroller(0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B);
+    Comptroller public comptroller =
+        Comptroller(0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B);
+
+    PriceFeed public priceFeed =
+        PriceFeed(0x922018674c12a7F0D394ebEEf9B58F186CdE13c1);
 }
