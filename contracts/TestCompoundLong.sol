@@ -40,5 +40,11 @@ contract TestCompoundLong {
     cTokenBorrow = CErc20(_cTokenBorrow);
     tokenBorrow = IERC20(_tokenBorrow);
     decimals = _decimals;
+
+    // enter market to enable borrow
+    address[] memory cTokens = new address[](1);
+    cTokens[0] = address(cEth);
+    uint[] memory errors = comptroller.enterMarkets(cTokens);
+    require(errors[0] == 0, "Comptroller.enterMarkets failed.");
   }
 }
