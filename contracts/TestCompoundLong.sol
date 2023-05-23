@@ -46,5 +46,7 @@ contract TestCompoundLong {
     cTokens[0] = address(cEth);
     uint[] memory errors = comptroller.enterMarkets(cTokens);
     require(errors[0] == 0, "Comptroller.enterMarkets failed.");
-  }=
+  }
+
+  receive() external payable {}
 }
