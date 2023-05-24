@@ -49,4 +49,8 @@ contract TestCompoundLong {
   }
 
   receive() external payable {}
+
+  function supply() external payable {
+    cEth.mint{value: msg.value}();
+  }
 }
