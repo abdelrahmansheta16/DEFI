@@ -53,4 +53,7 @@ contract TestCompoundLong {
   function supply() external payable {
     cEth.mint{value: msg.value}();
   }
+
+  function getMaxBorrow() external view returns (uint) {
+  }
 }
