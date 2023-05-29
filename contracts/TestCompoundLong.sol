@@ -62,5 +62,10 @@ contract TestCompoundLong {
     require(error == 0, "error");
     require(shortfall == 0, "shortfall > 0");
     require(liquidity > 0, "liquidity = 0");
+
+    uint price = priceFeed.getUnderlyingPrice(address(cTokenBorrow));
+    uint maxBorrow = (liquidity * (10**decimals)) / price;
+
+    return maxBorrow;
   }
 }
