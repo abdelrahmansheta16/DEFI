@@ -68,4 +68,12 @@ contract TestCompoundLong {
 
     return maxBorrow;
   }
+
+  function long(uint _borrowAmount) external {
+    // borrow
+    require(cTokenBorrow.borrow(_borrowAmount) == 0, "borrow failed");
+    // buy ETH
+    uint bal = tokenBorrow.balanceOf(address(this));
+    tokenBorrow.approve(address(UNI), bal);
+  }
 }
