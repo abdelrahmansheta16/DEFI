@@ -75,5 +75,10 @@ contract TestCompoundLong {
     // buy ETH
     uint bal = tokenBorrow.balanceOf(address(this));
     tokenBorrow.approve(address(UNI), bal);
+
+    address[] memory path = new address[](2);
+    path[0] = address(tokenBorrow);
+    path[1] = address(WETH);
+    UNI.swapExactTokensForETH(bal, 1, path, address(this), block.timestamp);
   }
 }
