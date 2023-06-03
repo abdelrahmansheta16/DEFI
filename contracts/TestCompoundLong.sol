@@ -81,4 +81,17 @@ contract TestCompoundLong {
     path[1] = address(WETH);
     UNI.swapExactTokensForETH(bal, 1, path, address(this), block.timestamp);
   }
+
+  function repay() external {
+    // sell ETH
+    address[] memory path = new address[](2);
+    path[0] = address(WETH);
+    path[1] = address(tokenBorrow);
+    UNI.swapExactETHForTokens{value: address(this).balance}(
+      1,
+      path,
+      address(this),
+      block.timestamp
+    );
+  }
 }
