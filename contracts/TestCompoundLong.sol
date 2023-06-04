@@ -93,5 +93,9 @@ contract TestCompoundLong {
       address(this),
       block.timestamp
     );
+    // repay borrow
+    uint borrowed = cTokenBorrow.borrowBalanceCurrent(address(this));
+    tokenBorrow.approve(address(cTokenBorrow), borrowed);
+    require(cTokenBorrow.repayBorrow(borrowed) == 0, "repay failed");
   }
 }
