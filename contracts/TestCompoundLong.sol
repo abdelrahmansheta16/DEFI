@@ -97,5 +97,10 @@ contract TestCompoundLong {
     uint borrowed = cTokenBorrow.borrowBalanceCurrent(address(this));
     tokenBorrow.approve(address(cTokenBorrow), borrowed);
     require(cTokenBorrow.repayBorrow(borrowed) == 0, "repay failed");
+
+    uint supplied = cEth.balanceOfUnderlying(address(this));
+    require(cEth.redeemUnderlying(supplied) == 0, "redeem failed");
+
+    // supplied ETH + supplied interest + profit (in token borrow)
   }
 }
