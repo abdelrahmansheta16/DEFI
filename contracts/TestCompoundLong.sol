@@ -103,4 +103,9 @@ contract TestCompoundLong {
 
     // supplied ETH + supplied interest + profit (in token borrow)
   }
+
+  // not view function
+  function getSuppliedBalance() external returns (uint) {
+    return cEth.balanceOfUnderlying(address(this));
+  }
 }
