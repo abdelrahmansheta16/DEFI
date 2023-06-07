@@ -8,3 +8,5 @@ const { web3 } = require("@openzeppelin/test-helpers/src/setup")
 const IERC20 = artifacts.require("IERC20")
 const TestCompoundLong = artifacts.require("TestCompoundLong")
 
+contract("TestCompoundLong", (accounts) => {
+})
