@@ -108,4 +108,9 @@ contract TestCompoundLong {
   function getSuppliedBalance() external returns (uint) {
     return cEth.balanceOfUnderlying(address(this));
   }
+
+  // not view function
+  function getBorrowBalance() external returns (uint) {
+    return cTokenBorrow.borrowBalanceCurrent(address(this));
+  }
 }
