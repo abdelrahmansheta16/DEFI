@@ -114,4 +114,16 @@ contract TestCompoundLong {
     return cTokenBorrow.borrowBalanceCurrent(address(this));
   }
 
+  function getAccountLiquidity()
+    external
+    view
+    returns (uint liquidity, uint shortfall)
+  {
+    // liquidity and shortfall in USD scaled up by 1e18
+    (uint error, uint _liquidity, uint _shortfall) = comptroller.getAccountLiquidity(
+      address(this)
+    );
+    require(error == 0, "error");
+    return (_liquidity, _shortfall);
+  }
 }
