@@ -13,4 +13,8 @@ contract("TestCompoundLong", (accounts) => {
   const TOKEN_BORROW = DAI
   const C_TOKEN_BORROW = CDAI
   const REPAY_WHALE = DAI_WHALE // used to repay interest on borrow
+
+  const ETH_AMOUNT = pow(10, 18).mul(new BN(10))
+  const BORROW_DECIMALS = 18
+  const BORROW_INTEREST = pow(10, BORROW_DECIMALS).mul(new BN(1000))
 })
