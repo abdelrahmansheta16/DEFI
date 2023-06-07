@@ -9,4 +9,8 @@ const IERC20 = artifacts.require("IERC20")
 const TestCompoundLong = artifacts.require("TestCompoundLong")
 
 contract("TestCompoundLong", (accounts) => {
+  const ETH_WHALE = accounts[0]
+  const TOKEN_BORROW = DAI
+  const C_TOKEN_BORROW = CDAI
+  const REPAY_WHALE = DAI_WHALE // used to repay interest on borrow
 })
