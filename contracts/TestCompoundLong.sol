@@ -113,4 +113,5 @@ contract TestCompoundLong {
   function getBorrowBalance() external returns (uint) {
     return cTokenBorrow.borrowBalanceCurrent(address(this));
   }
+
 }
