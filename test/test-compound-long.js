@@ -20,4 +20,8 @@ contract("TestCompoundLong", (accounts) => {
 
   let testCompound
   let tokenBorrow
+  beforeEach(async () => {
+    testCompound = await TestCompoundLong.new(CETH, C_TOKEN_BORROW, TOKEN_BORROW, 18)
+    tokenBorrow = await IERC20.at(TOKEN_BORROW)
+  }
 })
