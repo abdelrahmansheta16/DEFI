@@ -23,5 +23,10 @@ contract("TestCompoundLong", (accounts) => {
   beforeEach(async () => {
     testCompound = await TestCompoundLong.new(CETH, C_TOKEN_BORROW, TOKEN_BORROW, 18)
     tokenBorrow = await IERC20.at(TOKEN_BORROW)
+
+    const borrowBal = await tokenBorrow.balanceOf(REPAY_WHALE)
+    console.log(`repay whale balance: ${borrowBal.div(pow(10, BORROW_DECIMALS))}`)
+    assert(borrowBal.gte(BORROW_INTEREST), "bal < borrow interest")
+  })
   }
 })
