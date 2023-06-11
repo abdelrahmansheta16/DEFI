@@ -28,5 +28,13 @@ contract("TestCompoundLong", (accounts) => {
     console.log(`repay whale balance: ${borrowBal.div(pow(10, BORROW_DECIMALS))}`)
     assert(borrowBal.gte(BORROW_INTEREST), "bal < borrow interest")
   })
+
+  const snapshot = async (testCompound, tokenBorrow) => {
+    const maxBorrow = await testCompound.getMaxBorrow()
+    const ethBal = await web3.eth.getBalance(testCompound.address)
+    const tokenBorrowBal = await tokenBorrow.balanceOf(testCompound.address)
+    const supplied = await testCompound.getSuppliedBalance.call()
+    const borrowed = await testCompound.getBorrowBalance.call()
+    const { liquidity } = await testCompound.getAccountLiquidity()
   }
 })
