@@ -36,5 +36,14 @@ contract("TestCompoundLong", (accounts) => {
     const supplied = await testCompound.getSuppliedBalance.call()
     const borrowed = await testCompound.getBorrowBalance.call()
     const { liquidity } = await testCompound.getAccountLiquidity()
+
+    return {
+      maxBorrow,
+      eth: new BN(ethBal),
+      tokenBorrow: tokenBorrowBal,
+      supplied,
+      borrowed,
+      liquidity,
+    }
   }
 })
