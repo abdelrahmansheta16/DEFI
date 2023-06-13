@@ -46,4 +46,7 @@ contract("TestCompoundLong", (accounts) => {
       liquidity,
     }
   }
+
+  it("should long", async () => {
+  })
 })
