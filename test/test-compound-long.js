@@ -48,5 +48,13 @@ contract("TestCompoundLong", (accounts) => {
   }
 
   it("should long", async () => {
+    // used for debugging
+    let tx
+    let snap
+    // supply
+    tx = await testCompound.supply({
+      from: ETH_WHALE,
+      value: ETH_AMOUNT,
+    })
   })
 })
