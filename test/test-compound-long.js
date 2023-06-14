@@ -67,5 +67,14 @@ contract("TestCompoundLong", (accounts) => {
     const borrowAmount = frac(maxBorrow, 50, 100)
     console.log(`borrow amount: ${borrowAmount.div(pow(10, BORROW_DECIMALS))}`)
     tx = await testCompound.long(borrowAmount, { from: ETH_WHALE })
+
+    // update borrowed balance
+    // await testCompound.getBorrowBalance()
+
+    snap = await snapshot(testCompound, tokenBorrow)
+    console.log(`--- long ---`)
+    console.log(`liquidity: ${snap.liquidity.div(pow(10, 18))}`)
+    console.log(`borrowed: ${snap.borrowed.div(pow(10, BORROW_DECIMALS))}`)
+    console.log(`eth: ${snap.eth.div(pow(10, 18))}`)
   })
 })
