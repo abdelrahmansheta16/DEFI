@@ -56,5 +56,11 @@ contract("TestCompoundLong", (accounts) => {
       from: ETH_WHALE,
       value: ETH_AMOUNT,
     })
+
+    // long
+    snap = await snapshot(testCompound, tokenBorrow)
+    console.log(`--- supplied ---`)
+    console.log(`liquidity: ${snap.liquidity.div(pow(10, 18))}`)
+    console.log(`max borrow: ${snap.maxBorrow.div(pow(10, BORROW_DECIMALS))}`)
   })
 })
