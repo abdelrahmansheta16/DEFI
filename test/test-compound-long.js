@@ -76,5 +76,9 @@ contract("TestCompoundLong", (accounts) => {
     console.log(`liquidity: ${snap.liquidity.div(pow(10, 18))}`)
     console.log(`borrowed: ${snap.borrowed.div(pow(10, BORROW_DECIMALS))}`)
     console.log(`eth: ${snap.eth.div(pow(10, 18))}`)
+
+    // accrue interest on borrow
+    const block = await web3.eth.getBlockNumber()
+    await time.advanceBlockTo(block + 100)
   })
 })
