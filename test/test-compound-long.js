@@ -62,5 +62,10 @@ contract("TestCompoundLong", (accounts) => {
     console.log(`--- supplied ---`)
     console.log(`liquidity: ${snap.liquidity.div(pow(10, 18))}`)
     console.log(`max borrow: ${snap.maxBorrow.div(pow(10, BORROW_DECIMALS))}`)
+
+    const maxBorrow = await testCompound.getMaxBorrow()
+    const borrowAmount = frac(maxBorrow, 50, 100)
+    console.log(`borrow amount: ${borrowAmount.div(pow(10, BORROW_DECIMALS))}`)
+    tx = await testCompound.long(borrowAmount, { from: ETH_WHALE })
   })
 })
