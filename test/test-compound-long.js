@@ -80,5 +80,11 @@ contract("TestCompoundLong", (accounts) => {
     // accrue interest on borrow
     const block = await web3.eth.getBlockNumber()
     await time.advanceBlockTo(block + 100)
+
+    // repay
+    await tokenBorrow.transfer(testCompound.address, BORROW_INTEREST, { from: REPAY_WHALE })
+    tx = await testCompound.repay({
+      from: ETH_WHALE,
+    })
   })
 })
