@@ -86,5 +86,12 @@ contract("TestCompoundLong", (accounts) => {
     tx = await testCompound.repay({
       from: ETH_WHALE,
     })
+
+    snap = await snapshot(testCompound, tokenBorrow)
+    console.log(`--- repay ---`)
+    console.log(`liquidity: ${snap.liquidity.div(pow(10, 18))}`)
+    console.log(`borrowed: ${snap.borrowed.div(pow(10, BORROW_DECIMALS))}`)
+    console.log(`eth: ${snap.eth.div(pow(10, 18))}`)
+    console.log(`token borrow: ${snap.tokenBorrow.div(pow(10, BORROW_DECIMALS))}`)
   })
 })
