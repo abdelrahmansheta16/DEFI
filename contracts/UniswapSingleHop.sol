@@ -19,5 +19,11 @@ contract SwapExamples {
         external
         returns (uint amountOut)
     {
+        TransferHelper.safeTransferFrom(
+            WETH9,
+            msg.sender,
+            address(this),
+            amountIn
+        );
     }
 }
