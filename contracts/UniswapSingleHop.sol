@@ -26,5 +26,21 @@ contract SwapExamples {
             amountIn
         );
         TransferHelper.safeApprove(WETH9, address(swapRouter), amountIn);
+
+        ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
+        .ExactInputSingleParams({
+            tokenIn: WETH9,
+            tokenOut: DAI,
+            // pool fee 0.3%
+            fee: 3000,
+            recipient: msg.sender,
+            deadline: block.timestamp,
+            amountIn: amountIn,
+            amountOutMinimum: 0,
+            // NOTE: In production, this value can be used to set the limit
+            // for the price the swap will push the pool to,
+            // which can help protect against price impact
+            sqrtPriceLimitX96: 0
+        });
     }
 }
