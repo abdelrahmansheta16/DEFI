@@ -42,5 +42,6 @@ contract SwapExamples {
             // which can help protect against price impact
             sqrtPriceLimitX96: 0
         });
+        amountOut = swapRouter.exactInputSingle(params);
     }
 }
