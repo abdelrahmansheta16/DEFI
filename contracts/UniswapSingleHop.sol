@@ -44,4 +44,11 @@ contract SwapExamples {
         });
         amountOut = swapRouter.exactInputSingle(params);
     }
+
+    /// @notice swaps a minimum possible amount of WETH for a fixed amount of DAI.
+    function swapExactOutputSingle(uint amountOut, uint amountInMaximum)
+        external
+        returns (uint amountIn)
+    {
+    }
 }
