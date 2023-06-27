@@ -56,5 +56,6 @@ contract SwapExamples {
             address(this),
             amountInMaximum
         );
+        TransferHelper.safeApprove(WETH9, address(swapRouter), amountInMaximum);
     }
 }
