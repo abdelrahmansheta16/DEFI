@@ -57,5 +57,17 @@ contract SwapExamples {
             amountInMaximum
         );
         TransferHelper.safeApprove(WETH9, address(swapRouter), amountInMaximum);
+
+        ISwapRouter.ExactOutputSingleParams memory params = ISwapRouter
+            .ExactOutputSingleParams({
+                tokenIn: WETH9,
+                tokenOut: DAI,
+                fee: 3000,
+                recipient: msg.sender,
+                deadline: block.timestamp,
+                amountOut: amountOut,
+                amountInMaximum: amountInMaximum,
+                sqrtPriceLimitX96: 0
+            });
     }
 }
