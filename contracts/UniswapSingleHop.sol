@@ -69,5 +69,7 @@ contract SwapExamples {
                 amountInMaximum: amountInMaximum,
                 sqrtPriceLimitX96: 0
             });
+
+        amountIn = swapRouter.exactOutputSingle(params);
     }
 }
