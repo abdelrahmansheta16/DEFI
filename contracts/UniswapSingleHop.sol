@@ -71,5 +71,10 @@ contract SwapExamples {
             });
 
         amountIn = swapRouter.exactOutputSingle(params);
+
+        if (amountIn < amountInMaximum) {
+            // Reset approval on router
+            TransferHelper.safeApprove(WETH9, address(swapRouter), 0);
+        }
     }
 }
