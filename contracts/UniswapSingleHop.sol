@@ -75,6 +75,12 @@ contract SwapExamples {
         if (amountIn < amountInMaximum) {
             // Reset approval on router
             TransferHelper.safeApprove(WETH9, address(swapRouter), 0);
+            // Refund WETH to user
+            TransferHelper.safeTransfer(
+                WETH9,
+                msg.sender,
+                amountInMaximum - amountIn
+            );
         }
     }
 }
