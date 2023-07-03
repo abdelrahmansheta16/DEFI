@@ -83,4 +83,12 @@ contract SwapExamples {
             );
         }
     }
+
+    /// @notice swapInputMultiplePools swaps a fixed amount of WETH for a maximum possible amount of DAI
+    /// swap WETH --> USDC --> DAI
+    function swapExactInputMultihop(uint amountIn)
+        external
+        returns (uint amountOut)
+    {
+    }
 }
