@@ -96,5 +96,6 @@ contract SwapExamples {
             address(this),
             amountIn
         );
+        TransferHelper.safeApprove(WETH9, address(swapRouter), amountIn);
     }
 }
