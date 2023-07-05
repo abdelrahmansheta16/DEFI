@@ -27,6 +27,21 @@ contract TestUniswapOptimal {
         (uint reserve0, uint reserve1, ) = IUniswapV2Pair(pair).getReserves();
     }
 
+    /* sub-optimal one-sided supply
+  1. swap half of token A to token B
+  2. add liquidity
+  */
+    function subOptimalZap(
+        address _tokenA,
+        address _tokenB,
+        uint _amountA
+    ) external {
+        IERC20(_tokenA).transferFrom(msg.sender, address(this), _amountA);
+
+        _swap(_tokenA, _tokenB, _amountA.div(2));
+        _addLiquidity(_tokenA, _tokenB);
+    }
+
     function _swap(address _from, address _to, uint _amount) internal {
         IERC20(_from).approve(ROUTER, _amount);
 
