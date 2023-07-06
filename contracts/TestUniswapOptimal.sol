@@ -58,4 +58,22 @@ contract TestUniswapOptimal {
             block.timestamp
         );
     }
+
+    function _addLiquidity(address _tokenA, address _tokenB) internal {
+        uint balA = IERC20(_tokenA).balanceOf(address(this));
+        uint balB = IERC20(_tokenB).balanceOf(address(this));
+        IERC20(_tokenA).approve(ROUTER, balA);
+        IERC20(_tokenB).approve(ROUTER, balB);
+
+        IUniswapV2Router(ROUTER).addLiquidity(
+            _tokenA,
+            _tokenB,
+            balA,
+            balB,
+            0,
+            0,
+            address(this),
+            block.timestamp
+        );
+    }
 }
