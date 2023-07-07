@@ -76,4 +76,11 @@ contract TestUniswapOptimal {
             block.timestamp
         );
     }
+
+    function getPair(
+        address _tokenA,
+        address _tokenB
+    ) external view returns (address) {
+        return IUniswapV2Factory(FACTORY).getPair(_tokenA, _tokenB);
+    }
 }
