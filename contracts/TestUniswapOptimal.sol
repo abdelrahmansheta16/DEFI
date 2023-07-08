@@ -25,6 +25,18 @@ contract TestUniswapOptimal {
 
         address pair = IUniswapV2Factory(FACTORY).getPair(_tokenA, _tokenB);
         (uint reserve0, uint reserve1, ) = IUniswapV2Pair(pair).getReserves();
+
+        uint swapAmount;
+        if (IUniswapV2Pair(pair).token0() == _tokenA) {
+            // swap from token0 to token1
+            swapAmount = getSwapAmount(reserve0, _amountA);
+        } else {
+            // swap from token1 to token0
+            swapAmount = getSwapAmount(reserve1, _amountA);
+        }
+
+        _swap(_tokenA, _tokenB, swapAmount);
+        _addLiquidity(_tokenA, _tokenB);
     }
 
     /* sub-optimal one-sided supply
