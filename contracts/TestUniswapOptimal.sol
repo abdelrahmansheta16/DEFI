@@ -14,6 +14,34 @@ contract TestUniswapOptimal {
         0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;
     address private constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
+    // import "@uniswap/lib/contracts/libraries/Babylonian.sol";
+    function sqrt(uint y) internal pure returns (uint z) {
+        if (y > 3) {
+            z = y;
+            uint x = y / 2 + 1;
+            while (x < z) {
+                z = x;
+                x = (y / x + x) / 2;
+            }
+        } else if (y != 0) {
+            z = 1;
+        }
+        // else z = 0 (default value)
+    }
+
+    /*
+  s = optimal swap amount
+  r = amount of reserve for token a
+  a = amount of token a the user currently has (not added to reserve yet)
+  f = swap fee percent
+  s = (sqrt(((2 - f)r)^2 + 4(1 - f)ar) - (2 - f)r) / (2(1 - f))
+  */
+    function getSwapAmount(uint r, uint a) public pure returns (uint) {
+        return
+            (sqrt(r.mul(r.mul(3988009) + a.mul(3988000))).sub(r.mul(1997))) /
+            1994;
+    }
+
     /* optimal one-sided supply
   1. swap optimal amount from token A to token B
   2. add liquidity
