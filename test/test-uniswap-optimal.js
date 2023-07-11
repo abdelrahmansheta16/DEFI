@@ -47,4 +47,20 @@ contract("TestUniswapOptimal", (accounts) => {
     to 0
     */
   })
+
+  it("sub-optimal swap", async () => {
+    // const before = await snapshot()
+    await contract.subOptimalZap(fromToken.address, toToken.address, AMOUNT, {
+      from: WHALE,
+    })
+    const after = await snapshot()
+    console.log("lp", after.lp.toString())
+    console.log("from", after.fromToken.toString())
+    console.log("to", after.toToken.toString())
+    /*
+    lp 91461240284427443354176
+    from 0
+    to 86904179339298595766169
+    */
+  })
 })
