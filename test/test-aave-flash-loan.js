@@ -16,4 +16,17 @@ contract("TestAaveFlashLoan", (accounts) => {
 
   let testAaveFlashLoan
   let token
+  beforeEach(async () => {
+    token = await IERC20.at(TOKEN_BORROW)
+    testAaveFlashLoan = await TestAaveFlashLoan.new(ADDRESS_PROVIDER)
+
+    await sendEther(web3, accounts[0], WHALE, 1)
+
+    // send enough token to cover fee
+    const bal = await token.balanceOf(WHALE)
+    assert(bal.gte(FUND_AMOUNT), "balance < FUND")
+    await token.transfer(testAaveFlashLoan.address, FUND_AMOUNT, {
+      from: WHALE,
+    })
+  })
 })
