@@ -29,4 +29,13 @@ contract("TestAaveFlashLoan", (accounts) => {
       from: WHALE,
     })
   })
+
+  it("flash loan", async () => {
+    const tx = await testAaveFlashLoan.testFlashLoan(token.address, BORROW_AMOUNT, {
+      from: WHALE,
+    })
+    for (const log of tx.logs) {
+      console.log(log.args.message, log.args.val.toString())
+    }
+  })
 })
