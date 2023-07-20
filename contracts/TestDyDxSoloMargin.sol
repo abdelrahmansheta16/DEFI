@@ -53,6 +53,27 @@ contract TestDyDxSoloMargin is ICallee, DydxFlashloanBase {
 
         solo.operate(accountInfos, operations);
     }
+
+    function callFunction(
+        address sender,
+        Account.Info memory account,
+        bytes memory data
+    ) public override {
+        require(msg.sender == SOLO, "!solo");
+        require(sender == address(this), "!this contract");
+
+        MyCustomData memory mcd = abi.decode(data, (MyCustomData));
+        uint repayAmount = mcd.repayAmount;
+
+        uint bal = IERC20(mcd.token).balanceOf(address(this));
+        require(bal >= repayAmount, "bal < repay");
+
+        // More code here...
+        flashUser = sender;
+        emit Log("bal", bal);
+        emit Log("repay", repayAmount);
+        emit Log("bal - repay", bal - repayAmount);
+    }
 }
 // Solo margin contract mainnet - 0x1e0447b19bb6ecfdae1e4ae1694b0c3659614e4e
 // payable proxy - 0xa8b39829cE2246f89B31C013b8Cde15506Fb9A76
