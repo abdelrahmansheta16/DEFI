@@ -34,5 +34,15 @@ contract("TestDyDxSoloMargin", (accounts) => {
     assert(soloBal.gte(BORROW_AMOUNT), "solo < borrow")
   })
 
+  it("flash loan", async () => {
+    const tx = await testDyDxSoloMargin.initiateFlashLoan(token.address, BORROW_AMOUNT, {
+      from: WHALE,
+    })
 
+    console.log(`${await testDyDxSoloMargin.flashUser()}`)
+
+    for (const log of tx.logs) {
+      console.log(log.args.message, log.args.val.toString())
+    }
+  })
 })
