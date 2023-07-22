@@ -16,5 +16,23 @@ contract("TestDyDxSoloMargin", (accounts) => {
 
   let testDyDxSoloMargin
   let token
+  beforeEach(async () => {
+    token = await IERC20.at(TOKEN)
+    testDyDxSoloMargin = await TestDyDxSoloMargin.new()
+
+    await sendEther(web3, accounts[0], WHALE, 1)
+
+    // send enough token to cover fee
+    const bal = await token.balanceOf(WHALE)
+    assert(bal.gte(FUND_AMOUNT), "balance < fund")
+    await token.transfer(testDyDxSoloMargin.address, FUND_AMOUNT, {
+      from: WHALE,
+    })
+
+    const soloBal = await token.balanceOf(SOLO)
+    console.log(`solo balance: ${soloBal}`)
+    assert(soloBal.gte(BORROW_AMOUNT), "solo < borrow")
+  })
+
 
 })
