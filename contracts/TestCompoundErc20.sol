@@ -26,6 +26,9 @@ contract TestCompoundErc20 {
     require(cToken.mint(_amount) == 0, "mint failed");
   }
 
+  function getCTokenBalance() external view returns (uint) {
+    return cToken.balanceOf(address(this));
+  }
 
 
 
