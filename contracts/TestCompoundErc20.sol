@@ -37,4 +37,15 @@ contract TestCompoundErc20 {
         // Amount added to you supply balance this block
         supplyRate = cToken.supplyRatePerBlock();
     }
+
+    // not view function
+    function estimateBalanceOfUnderlying() external returns (uint) {
+        uint cTokenBal = cToken.balanceOf(address(this));
+        uint exchangeRate = cToken.exchangeRateCurrent();
+        uint decimals = 8; // WBTC = 8 decimals
+        uint cTokenDecimals = 8;
+
+        return
+            (cTokenBal * exchangeRate) / 10 ** (18 + decimals - cTokenDecimals);
+    }
 }
