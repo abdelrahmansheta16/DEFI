@@ -48,4 +48,9 @@ contract TestCompoundErc20 {
         return
             (cTokenBal * exchangeRate) / 10 ** (18 + decimals - cTokenDecimals);
     }
+
+    // not view function
+    function balanceOfUnderlying() external returns (uint) {
+        return cToken.balanceOfUnderlying(address(this));
+    }
 }
