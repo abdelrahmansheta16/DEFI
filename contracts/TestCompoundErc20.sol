@@ -73,4 +73,21 @@ contract TestCompoundErc20 {
         );
         return colFactor; // divide by 1e18 to get in %
     }
+
+    // account liquidity - calculate how much can I borrow?
+    // sum of (supplied balance of market entered * col factor) - borrowed
+    function getAccountLiquidity()
+        external
+        view
+        returns (uint liquidity, uint shortfall)
+    {
+        // liquidity and shortfall in USD scaled up by 1e18
+        (uint error, uint _liquidity, uint _shortfall) = comptroller
+            .getAccountLiquidity(address(this));
+        require(error == 0, "error");
+        // normal circumstance - liquidity > 0 and shortfall == 0
+        // liquidity > 0 means account can borrow up to `liquidity`
+        // shortfall > 0 is subject to liquidation, you borrowed over limit
+        return (_liquidity, _shortfall);
+    }
 }
