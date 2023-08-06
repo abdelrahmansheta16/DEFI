@@ -65,4 +65,12 @@ contract TestCompoundErc20 {
 
     PriceFeed public priceFeed =
         PriceFeed(0x922018674c12a7F0D394ebEEf9B58F186CdE13c1);
+
+    // collateral
+    function getCollateralFactor() external view returns (uint) {
+        (bool isListed, uint colFactor, bool isComped) = comptroller.markets(
+            address(cToken)
+        );
+        return colFactor; // divide by 1e18 to get in %
+    }
 }
