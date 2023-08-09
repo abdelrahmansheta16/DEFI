@@ -96,4 +96,34 @@ contract TestCompoundErc20 {
         // scaled up by 1e18
         return priceFeed.getUnderlyingPrice(_cToken);
     }
+
+    // enter market and borrow
+    function borrow(address _cTokenToBorrow, uint _decimals) external {
+        // enter market
+        // enter the supply market so you can borrow another type of asset
+        address[] memory cTokens = new address[](1);
+        cTokens[0] = address(cToken);
+        uint[] memory errors = comptroller.enterMarkets(cTokens);
+        require(errors[0] == 0, "Comptroller.enterMarkets failed.");
+
+        // check liquidity
+        (uint error, uint liquidity, uint shortfall) = comptroller
+            .getAccountLiquidity(address(this));
+        require(error == 0, "error");
+        require(shortfall == 0, "shortfall > 0");
+        require(liquidity > 0, "liquidity = 0");
+
+        // calculate max borrow
+        uint price = priceFeed.getUnderlyingPrice(_cTokenToBorrow);
+
+        // liquidity - USD scaled up by 1e18
+        // price - USD scaled up by 1e18
+        // decimals - decimals of token to borrow
+        uint maxBorrow = (liquidity * (10 ** _decimals)) / price;
+        require(maxBorrow > 0, "max borrow = 0");
+
+        // borrow 50% of max borrow
+        uint amount = (maxBorrow * 50) / 100;
+        require(CErc20(_cTokenToBorrow).borrow(amount) == 0, "borrow failed");
+    }
 }
