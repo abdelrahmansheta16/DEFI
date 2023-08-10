@@ -126,4 +126,10 @@ contract TestCompoundErc20 {
         uint amount = (maxBorrow * 50) / 100;
         require(CErc20(_cTokenToBorrow).borrow(amount) == 0, "borrow failed");
     }
+
+    // borrowed balance (includes interest)
+    // not view function
+    function getBorrowedBalance(address _cTokenBorrowed) public returns (uint) {
+        return CErc20(_cTokenBorrowed).borrowBalanceCurrent(address(this));
+    }
 }
