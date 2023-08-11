@@ -132,4 +132,12 @@ contract TestCompoundErc20 {
     function getBorrowedBalance(address _cTokenBorrowed) public returns (uint) {
         return CErc20(_cTokenBorrowed).borrowBalanceCurrent(address(this));
     }
+
+    // borrow rate
+    function getBorrowRatePerBlock(
+        address _cTokenBorrowed
+    ) external view returns (uint) {
+        // scaled up by 1e18
+        return CErc20(_cTokenBorrowed).borrowRatePerBlock();
+    }
 }
