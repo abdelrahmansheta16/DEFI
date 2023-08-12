@@ -140,4 +140,18 @@ contract TestCompoundErc20 {
         // scaled up by 1e18
         return CErc20(_cTokenBorrowed).borrowRatePerBlock();
     }
+
+    // repay borrow
+    function repay(
+        address _tokenBorrowed,
+        address _cTokenBorrowed,
+        uint _amount
+    ) external {
+        IERC20(_tokenBorrowed).approve(_cTokenBorrowed, _amount);
+        // _amount = 2 ** 256 - 1 means repay all
+        require(
+            CErc20(_cTokenBorrowed).repayBorrow(_amount) == 0,
+            "repay failed"
+        );
+    }
 }
