@@ -97,5 +97,20 @@ contract SwapExamples {
             amountIn
         );
         TransferHelper.safeApprove(WETH9, address(swapRouter), amountIn);
+
+        ISwapRouter.ExactInputParams memory params = ISwapRouter
+            .ExactInputParams({
+                path: abi.encodePacked(
+                    WETH9,
+                    uint24(3000),
+                    USDC,
+                    uint24(100),
+                    DAI
+                ),
+                recipient: msg.sender,
+                deadline: block.timestamp,
+                amountIn: amountIn,
+                amountOutMinimum: 0
+            });
     }
 }
