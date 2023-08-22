@@ -112,5 +112,6 @@ contract SwapExamples {
                 amountIn: amountIn,
                 amountOutMinimum: 0
             });
+        amountOut = swapRouter.exactInput(params);
     }
 }
