@@ -114,4 +114,12 @@ contract SwapExamples {
             });
         amountOut = swapRouter.exactInput(params);
     }
+
+    /// @notice swapExactOutputMultihop swaps a minimum possible amount of WETH for a fixed amount of USDC
+    /// swap WETH --> USDC --> DAI
+    function swapExactOutputMultihop(uint amountOut, uint amountInMaximum)
+        external
+        returns (uint amountIn)
+    {
+    }
 }
