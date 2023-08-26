@@ -128,5 +128,21 @@ contract SwapExamples {
             amountInMaximum
         );
         TransferHelper.safeApprove(WETH9, address(swapRouter), amountInMaximum);
+
+        // The parameter path is encoded as (tokenOut, fee, tokenIn/tokenOut, fee, tokenIn)
+        ISwapRouter.ExactOutputParams memory params = ISwapRouter
+            .ExactOutputParams({
+                path: abi.encodePacked(
+                    DAI,
+                    uint24(100),
+                    USDC,
+                    uint24(3000),
+                    WETH9
+                ),
+                recipient: msg.sender,
+                deadline: block.timestamp,
+                amountOut: amountOut,
+                amountInMaximum: amountInMaximum
+            });
     }
 }
