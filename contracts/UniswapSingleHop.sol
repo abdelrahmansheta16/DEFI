@@ -144,5 +144,7 @@ contract SwapExamples {
                 amountOut: amountOut,
                 amountInMaximum: amountInMaximum
             });
+
+        amountIn = swapRouter.exactOutput(params);
     }
 }
