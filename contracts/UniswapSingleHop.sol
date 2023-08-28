@@ -146,5 +146,14 @@ contract SwapExamples {
             });
 
         amountIn = swapRouter.exactOutput(params);
+        if (amountIn < amountInMaximum) {
+            TransferHelper.safeApprove(WETH9, address(swapRouter), 0);
+            TransferHelper.safeTransferFrom(
+                WETH9,
+                address(this),
+                msg.sender,
+                amountInMaximum - amountIn
+            );
+        }
     }
 }
