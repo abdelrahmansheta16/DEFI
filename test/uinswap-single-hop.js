@@ -12,4 +12,7 @@ describe("SwapExamples", () => {
     let dai
     let usdc
 
+    before(async () => {
+        accounts = await ethers.getSigners(1)
+    })
 })
