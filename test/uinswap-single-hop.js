@@ -14,5 +14,9 @@ describe("SwapExamples", () => {
 
     before(async () => {
         accounts = await ethers.getSigners(1)
+
+        const SwapExamples = await ethers.getContractFactory("SwapExamples")
+        swapExamples = await SwapExamples.deploy()
+        await swapExamples.deployed()
     })
 })
