@@ -23,4 +23,7 @@ describe("SwapExamples", () => {
         dai = await ethers.getContractAt("IERC20", DAI)
         usdc = await ethers.getContractAt("IERC20", USDC)
     })
+
+    it("swapExactInputSingle", async () => {
+    })
 })
