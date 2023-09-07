@@ -25,5 +25,6 @@ describe("SwapExamples", () => {
     })
 
     it("swapExactInputSingle", async () => {
+        const amountIn = 10n ** 18n
     })
 })
