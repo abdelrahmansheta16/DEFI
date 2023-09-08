@@ -26,5 +26,9 @@ describe("SwapExamples", () => {
 
     it("swapExactInputSingle", async () => {
         const amountIn = 10n ** 18n
+
+        // Deposit WETH
+        await weth.deposit({ value: amountIn })
+        await weth.approve(swapExamples.address, amountIn)
     })
 })
