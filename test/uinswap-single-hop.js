@@ -33,5 +33,7 @@ describe("SwapExamples", () => {
 
         // Swap
         await swapExamples.swapExactInputSingle(amountIn)
+
+        console.log("DAI balance", await dai.balanceOf(accounts[0].address))
     })
 })
