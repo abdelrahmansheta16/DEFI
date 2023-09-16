@@ -47,5 +47,7 @@ describe("SwapExamples", () => {
 
         // Swap
         await swapExamples.swapExactOutputSingle(daiAmountOut, wethAmountInMax)
+
+        console.log("DAI balance", await dai.balanceOf(accounts[0].address))
     })
 })
