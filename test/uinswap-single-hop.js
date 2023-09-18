@@ -52,5 +52,6 @@ describe("SwapExamples", () => {
     })
 
     it("swapExactInputMultihop", async () => {
+        const amountIn = 10n ** 18n
     })
 })
