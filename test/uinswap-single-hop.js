@@ -65,5 +65,7 @@ describe("SwapExamples", () => {
     })
 
     it("swapExactOutputMultihop", async () => {
+        const wethAmountInMax = 10n ** 18n
+        const daiAmountOut = 100n * 10n ** 18n
     })
 })
