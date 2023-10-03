@@ -71,5 +71,8 @@ describe("SwapExamples", () => {
         // Deposit WETH
         await weth.deposit({ value: wethAmountInMax })
         await weth.approve(swapExamples.address, wethAmountInMax)
+
+        // Swap
+        await swapExamples.swapExactOutputMultihop(daiAmountOut, wethAmountInMax)
     })
 })
