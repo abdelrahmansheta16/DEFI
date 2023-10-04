@@ -74,5 +74,7 @@ describe("SwapExamples", () => {
 
         // Swap
         await swapExamples.swapExactOutputMultihop(daiAmountOut, wethAmountInMax)
+
+        console.log("DAI balance", await dai.balanceOf(accounts[0].address))
     })
 })
