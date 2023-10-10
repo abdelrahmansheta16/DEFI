@@ -17,6 +17,15 @@ contract LiquidityExamples is IERC721Receiver {
     // 0.01% fee
     uint24 public constant poolFee = 100;
 
-    INonfungiblePositionManager public nonfungiblePositionManager =
+    INonfungiblePositionManager public nonfungiblePositionManager = 
         INonfungiblePositionManager(0xC36442b4a4522E871399CD717aBDD847Ab11FE88);
+
+    /// @notice Represents the deposit of an NFT
+    struct Deposit {
+        address owner;
+        uint128 liquidity;
+        address token0;
+        address token1;
+    }
+
 }
