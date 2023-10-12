@@ -31,4 +31,8 @@ contract LiquidityExamples is IERC721Receiver {
     /// @dev deposits[tokenId] => Deposit
     mapping(uint => Deposit) public deposits;
 
+    // Store token id used in this example
+    uint public tokenId;
+
+
 }
