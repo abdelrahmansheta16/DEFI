@@ -34,5 +34,15 @@ contract LiquidityExamples is IERC721Receiver {
     // Store token id used in this example
     uint public tokenId;
 
+    // Implementing `onERC721Received` so this contract can receive custody of erc721 tokens
+    function onERC721Received(
+        address operator,
+        address,
+        uint _tokenId,
+        bytes calldata
+    ) external override returns (bytes4) {
+        _createDeposit(operator, _tokenId);
+        return this.onERC721Received.selector;
+    }
 
 }
