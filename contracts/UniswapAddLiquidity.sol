@@ -44,6 +44,30 @@ contract LiquidityExamples is IERC721Receiver {
         _createDeposit(operator, _tokenId);
         return this.onERC721Received.selector;
     }
+
+    function _createDeposit(address owner, uint _tokenId) internal {
+        (
+            ,
+            ,
+            address token0,
+            address token1,
+            ,
+            ,
+            ,
+            uint128 liquidity,
+            ,
+            ,
+            ,
+
+        ) = nonfungiblePositionManager.positions(_tokenId);
+        // set the owner and data for position
+        // operator is msg.sender
+        deposits[_tokenId] = Deposit({
+            owner: owner,
+            liquidity: liquidity,
+            token0: token0,
+            token1: token1
+        });
     }
 
 }
