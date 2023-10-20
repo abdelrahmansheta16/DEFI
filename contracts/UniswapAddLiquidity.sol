@@ -68,6 +68,11 @@ contract LiquidityExamples is IERC721Receiver {
             token0: token0,
             token1: token1
         });
+
+        console.log("Token id", _tokenId);
+        console.log("Liquidity", liquidity);
+
+        tokenId = _tokenId;
     }
 
 }
