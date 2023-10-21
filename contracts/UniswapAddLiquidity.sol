@@ -75,4 +75,14 @@ contract LiquidityExamples is IERC721Receiver {
         tokenId = _tokenId;
     }
 
+    function mintNewPosition()
+        external
+        returns (
+            uint _tokenId,
+            uint128 liquidity,
+            uint amount0,
+            uint amount1
+        )
+    {
+    }
 }
