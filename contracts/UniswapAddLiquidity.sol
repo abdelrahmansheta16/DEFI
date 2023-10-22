@@ -84,5 +84,9 @@ contract LiquidityExamples is IERC721Receiver {
             uint amount1
         )
     {
+        // For this example, we will provide equal amounts of liquidity in both assets.
+        // Providing liquidity in both assets means liquidity will be earning fees and is considered in-range.
+        uint amount0ToMint = 100 * 1e18;
+        uint amount1ToMint = 100 * 1e6;
     }
 }
