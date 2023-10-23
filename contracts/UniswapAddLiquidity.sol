@@ -88,5 +88,12 @@ contract LiquidityExamples is IERC721Receiver {
         // Providing liquidity in both assets means liquidity will be earning fees and is considered in-range.
         uint amount0ToMint = 100 * 1e18;
         uint amount1ToMint = 100 * 1e6;
+
+        // Approve the position manager
+        TransferHelper.safeApprove(
+            DAI,
+            address(nonfungiblePositionManager),
+            amount0ToMint
+        );
     }
 }
