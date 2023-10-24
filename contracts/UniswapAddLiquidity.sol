@@ -95,5 +95,10 @@ contract LiquidityExamples is IERC721Receiver {
             address(nonfungiblePositionManager),
             amount0ToMint
         );
+        TransferHelper.safeApprove(
+            USDC,
+            address(nonfungiblePositionManager),
+            amount1ToMint
+        );
     }
 }
