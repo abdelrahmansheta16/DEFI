@@ -100,5 +100,23 @@ contract LiquidityExamples is IERC721Receiver {
             address(nonfungiblePositionManager),
             amount1ToMint
         );
+
+        INonfungiblePositionManager.MintParams
+            memory params = INonfungiblePositionManager.MintParams({
+                token0: DAI,
+                token1: USDC,
+                fee: poolFee,
+                // By using TickMath.MIN_TICK and TickMath.MAX_TICK, 
+                // we are providing liquidity across the whole range of the pool. 
+                // Not recommended in production.
+                tickLower: TickMath.MIN_TICK,
+                tickUpper: TickMath.MAX_TICK,
+                amount0Desired: amount0ToMint,
+                amount1Desired: amount1ToMint,
+                amount0Min: 0,
+                amount1Min: 0,
+                recipient: address(this),
+                deadline: block.timestamp
+            });
     }
 }
