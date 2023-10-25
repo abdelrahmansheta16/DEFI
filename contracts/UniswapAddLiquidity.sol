@@ -123,5 +123,8 @@ contract LiquidityExamples is IERC721Receiver {
         // already be created and initialized in order to mint
         (_tokenId, liquidity, amount0, amount1) = nonfungiblePositionManager
             .mint(params);
+
+        // Create a deposit
+        _createDeposit(msg.sender, _tokenId);
     }
 }
