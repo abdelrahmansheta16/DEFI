@@ -126,5 +126,16 @@ contract LiquidityExamples is IERC721Receiver {
 
         // Create a deposit
         _createDeposit(msg.sender, _tokenId);
+
+        // Remove allowance and refund in both assets.
+        if (amount0 < amount0ToMint) {
+            TransferHelper.safeApprove(
+                DAI,
+                address(nonfungiblePositionManager),
+                0
+            );
+            uint refund0 = amount0ToMint - amount0;
+            TransferHelper.safeTransfer(DAI, msg.sender, refund0);
+        }
     }
 }
