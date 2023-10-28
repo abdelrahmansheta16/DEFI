@@ -148,4 +148,7 @@ contract LiquidityExamples is IERC721Receiver {
             TransferHelper.safeTransfer(USDC, msg.sender, refund1);
         }
     }
+
+    function collectAllFees() external returns (uint256 amount0, uint256 amount1) {
+    }
 }
