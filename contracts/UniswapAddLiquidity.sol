@@ -161,5 +161,8 @@ contract LiquidityExamples is IERC721Receiver {
             });
 
         (amount0, amount1) = nonfungiblePositionManager.collect(params);
+
+        console.log("fee 0", amount0);
+        console.log("fee 1", amount1);
     }
 }
