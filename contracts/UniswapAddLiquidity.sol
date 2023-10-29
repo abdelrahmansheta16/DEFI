@@ -150,5 +150,14 @@ contract LiquidityExamples is IERC721Receiver {
     }
 
     function collectAllFees() external returns (uint256 amount0, uint256 amount1) {
+        // set amount0Max and amount1Max to uint256.max to collect all fees
+        // alternatively can set recipient to msg.sender and avoid another transaction in `sendToOwner`
+        INonfungiblePositionManager.CollectParams memory params =
+            INonfungiblePositionManager.CollectParams({
+                tokenId: tokenId,
+                recipient: address(this),
+                amount0Max: type(uint128).max,
+                amount1Max: type(uint128).max
+            });
     }
 }
