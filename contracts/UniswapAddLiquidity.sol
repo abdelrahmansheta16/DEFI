@@ -159,5 +159,7 @@ contract LiquidityExamples is IERC721Receiver {
                 amount0Max: type(uint128).max,
                 amount1Max: type(uint128).max
             });
+
+        (amount0, amount1) = nonfungiblePositionManager.collect(params);
     }
 }
