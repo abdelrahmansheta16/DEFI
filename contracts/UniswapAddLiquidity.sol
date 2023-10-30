@@ -217,4 +217,7 @@ contract LiquidityExamples is IERC721Receiver {
         ) = nonfungiblePositionManager.positions(_tokenId);
         return liquidity;
     }
+
+    function decreaseLiquidity(uint128 liquidity) external returns (uint amount0, uint amount1) {
+    }
 }
