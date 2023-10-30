@@ -179,5 +179,8 @@ contract LiquidityExamples is IERC721Receiver {
     {
         TransferHelper.safeTransferFrom(DAI, msg.sender, address(this), amountAdd0);
         TransferHelper.safeTransferFrom(USDC, msg.sender, address(this), amountAdd1);
+
+        TransferHelper.safeApprove(DAI, address(nonfungiblePositionManager), amountAdd0);
+        TransferHelper.safeApprove(USDC, address(nonfungiblePositionManager), amountAdd1);
     }
 }
