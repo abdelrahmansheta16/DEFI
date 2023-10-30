@@ -192,5 +192,7 @@ contract LiquidityExamples is IERC721Receiver {
                 amount1Min: 0,
                 deadline: block.timestamp
             });
+
+        (liquidity, amount0, amount1) = nonfungiblePositionManager.increaseLiquidity(params);
     }
 }
