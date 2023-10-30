@@ -165,4 +165,17 @@ contract LiquidityExamples is IERC721Receiver {
         console.log("fee 0", amount0);
         console.log("fee 1", amount1);
     }
+
+    function increaseLiquidityCurrentRange(
+        uint256 amountAdd0,
+        uint256 amountAdd1
+    )
+        external
+        returns (
+            uint128 liquidity,
+            uint256 amount0,
+            uint256 amount1
+        )
+    {
+    }
 }
