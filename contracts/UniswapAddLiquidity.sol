@@ -219,5 +219,13 @@ contract LiquidityExamples is IERC721Receiver {
     }
 
     function decreaseLiquidity(uint128 liquidity) external returns (uint amount0, uint amount1) {
+        INonfungiblePositionManager.DecreaseLiquidityParams memory params =
+            INonfungiblePositionManager.DecreaseLiquidityParams({
+                tokenId: tokenId,
+                liquidity: liquidity,
+                amount0Min: 0,
+                amount1Min: 0,
+                deadline: block.timestamp
+            });
     }
 }
