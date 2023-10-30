@@ -199,4 +199,22 @@ contract LiquidityExamples is IERC721Receiver {
         console.log("amount 0", amount0);
         console.log("amount 1", amount1);
     }
+
+    function getLiquidity(uint _tokenId) external view returns (uint128) {
+        (
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            uint128 liquidity,
+            ,
+            ,
+            ,
+
+        ) = nonfungiblePositionManager.positions(_tokenId);
+        return liquidity;
+    }
 }
