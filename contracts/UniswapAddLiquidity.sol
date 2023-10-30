@@ -182,5 +182,15 @@ contract LiquidityExamples is IERC721Receiver {
 
         TransferHelper.safeApprove(DAI, address(nonfungiblePositionManager), amountAdd0);
         TransferHelper.safeApprove(USDC, address(nonfungiblePositionManager), amountAdd1);
+
+        INonfungiblePositionManager.IncreaseLiquidityParams memory params =
+            INonfungiblePositionManager.IncreaseLiquidityParams({
+                tokenId: tokenId,
+                amount0Desired: amountAdd0,
+                amount1Desired: amountAdd1,
+                amount0Min: 0,
+                amount1Min: 0,
+                deadline: block.timestamp
+            });
     }
 }
